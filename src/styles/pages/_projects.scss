@@ -1,0 +1,105 @@
+@import "../helpers/variables";
+@import "../components/card";
+@import "../components/video";
+
+.project-menu {
+  height: 97.5vh;
+  // margin: 5%;
+  padding-top: 12.5vh;
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-template-rows: 100%;
+  justify-items: center;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  // place-items: center;
+}
+.project-menu-sidebar {
+  grid-column: 1;
+  position: sticky;
+  top: 0;
+}
+.nav-list {
+  padding-top: 2%;
+  font: {
+    family: forma-djr-banner, sans-serif;
+    weight: 700;
+    style: normal;
+    size: 1.275rem;
+  }
+  &-active {
+    color: $ice-white;
+    cursor: default;
+    line-height: 1.5;
+  }
+  &-inactive {
+    color: $ice-white-disabled;
+    cursor: pointer;
+    line-height: 1.5;
+    transition: 0.3s;
+    &:hover {
+      color: $ice-white;
+    }
+  }
+}
+.project-menu-right {
+  width: 90%;
+  padding-right: 1%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  row-gap: 15%;
+  justify-content: center;
+}
+// .overlay-4 {
+//   position: absolute;
+//   width: 80%;
+//   height: 100%;
+//   z-index: 5;
+//   background: {
+//     image: url("../images/plastic1-tiny.jpg");
+//     size: 50%;
+//     repeat: no-repeat;
+//     position: left center;
+//   }
+//   mix-blend-mode: hue;
+//   pointer-events: none;
+// }
+// .project-menu-right {
+//   grid-column-start: 2;
+// }
+// .info-card-wrapper {
+//   grid-column-start: 2;
+//   height: 100%;
+//   width: 50vw;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+// .video-wrapper {
+//   grid-column-start: 1;
+//   position: absolute;
+//   right: 0;
+//   bottom: 0;
+//   width: 50vw;
+//   height: 103vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   pointer-events: none;
+//   transition: 0.5s;
+//   // padding-left: 2.5%;
+// }
+// #blurred {
+//   filter: blur(3px) brightness(0.5);
+// }
+
+// .project-menu-gif {
+//   width: 520px;
+//   height: 262px;
+//   position: relative;
+//   bottom: 2.5%;
+// }
+// .demo-gif {
+//   transform: scale(1.2);
+// }

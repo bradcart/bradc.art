@@ -1,0 +1,23 @@
+@import "../helpers/variables";
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: $ice-white;
+  background-color: $deep-black;
+  width: 100px;
+  border: 1px inset $ice-white;
+  width: fit-content;
+  cursor: pointer;
+  transition: 0.3s;
+  font: {
+    family: forma-djr-banner, sans-serif;
+    weight: 700;
+    style: normal;
+  }
+  padding: 0.25em 0.5em;
+  &:hover {
+    background-color: $deep-black-hover; 
+  }
+}

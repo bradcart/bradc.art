@@ -1,0 +1,172 @@
+@import "../helpers/variables";
+
+@mixin gradient-overlay($img) {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  background: {
+    image: $img;
+    repeat: no-repeat;
+    position: center;
+    size: cover;
+  }
+  // filter: hue-rotate($hue);
+  // -webkit-filter: hue-rotate($hue);
+  // transition: 0.5s ease-out;
+  mix-blend-mode: hue;
+  pointer-events: none;
+  overflow: hidden;
+  // transform: translateZ(0);
+  // backface-visibility: hidden;
+  // perspective: 1000;
+  // will-change: transform;
+}
+.overlay-one {
+  @include gradient-overlay(url("../images/plastic1-tiny.jpg"));
+}
+.overlay-2 {
+  @include gradient-overlay(url("../images/plastic2-tiny.jpg"));
+}
+.overlay-3 {
+  @include gradient-overlay(url("../images/plastic3-tiny.jpg"));
+}
+.overlay--about {
+  @include gradient-overlay(url("../images/plastic1-tiny.jpg"));
+  mix-blend-mode: hue;
+  width: 50vw;
+  height: 30vh;
+  left: 0;
+  bottom: 0;
+  opacity: 1;
+}
+
+.overlay-1 {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  background: {
+    image: url("../images/plastic1-tiny.jpg");
+    repeat: no-repeat;
+    position: center;
+    size: cover;
+  }
+  // filter: hue-rotate($hue);
+  // -webkit-filter: hue-rotate($hue);
+  // transition: 0.5s ease-out;
+  mix-blend-mode: hue;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.background {
+  // position: relative;
+  height: 100vh;
+  width: 100vw;
+  // z-index: 2;
+  background: $deep-black;
+  overflow: hidden;
+}
+
+.film-grain {
+  position: fixed;
+  z-index: 7;
+  width: 200vw;
+  height: 200vh;
+  left: -50%;
+  top: -50%;
+  overflow: hidden;
+  background-image: url("../images/grain.png");
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+  animation: grain 1.5s steps(6) infinite;
+  pointer-events: none;
+  transform: translateZ(0);
+  // backface-visibility: hidden;
+  // perspective: 1000;
+  // will-change: transform;
+}
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  30% {
+    transform: translate(3%, -15%);
+  }
+  50% {
+    transform: translate(12%, 9%);
+  }
+  70% {
+    transform: translate(9%, 4%);
+  }
+  90% {
+    transform: translate(-1%, 7%);
+  }
+}
+
+// .background {
+//   // position: relative;
+//   height: 100vh;
+//   width: 100vw;
+//   // z-index: 2;
+//   background: $deep-black;
+//   overflow: hidden;
+// }
+
+// .background:after {
+//   animation: grain 8s steps(10) infinite;
+//   background-image: url("../images/grain.png");
+//   content: "";
+//   position: fixed;
+//   // z-index: 6;
+//   width: 300%;
+//   height: 300%;
+//   left: -50%;
+//   top: -100%;
+//   overflow: hidden;
+//   mix-blend-mode: overlay;
+//   opacity: 0.5;
+//   pointer-events: none;
+//   // transform: translateZ(0);
+//   // backface-visibility: hidden;
+//   // perspective: 1000;
+//   // will-change: transform;
+// }
+// @keyframes grain {
+//   0%,
+//   100% {
+//     transform: translate(0, 0);
+//   }
+//   10% {
+//     transform: translate(-5%, -10%);
+//   }
+//   20% {
+//     transform: translate(-15%, 5%);
+//   }
+//   30% {
+//     transform: translate(7%, -25%);
+//   }
+//   40% {
+//     transform: translate(-5%, 25%);
+//   }
+//   50% {
+//     transform: translate(-15%, 10%);
+//   }
+//   60% {
+//     transform: translate(15%, 0%);
+//   }
+//   70% {
+//     transform: translate(0%, 15%);
+//   }
+//   80% {
+//     transform: translate(3%, 35%);
+//   }
+//   90% {
+//     transform: translate(-10%, 10%);
+//   }
+// }

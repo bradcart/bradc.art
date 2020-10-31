@@ -1,0 +1,143 @@
+@import "components/layout";
+@import "components/navbar";
+@import "components/button";
+@import "pages/index";
+@import "pages/projects";
+@import "pages/about";
+
+@font-face {
+  font-family: "Hanson";
+  src: url("../fonts/Hanson-Bold.otf") format("opentype");
+}
+
+// .cursor {
+//   width: 30px;
+//   height: 30px;
+//   border: 2px solid $ice-white;
+//   border-radius: 100%;
+//   position: fixed;
+//   transform: translate(-50%, -50%);
+//   pointer-events: none;
+//   mix-blend-mode: difference;
+//   transition: all 150ms ease;
+//   transition-property: opacity, background-color, transform, mix-blend-mode;
+// }
+// .cursor--clicked {
+//   transform: translate(-50%, -50%) scale(0.9);
+//   background-color: $ice-white;
+// }
+// .cursor--hidden {
+//   opacity: 0;
+// }
+// .cursor--link-hovered {
+//   transform: translate(-50%, -50%) scale(1.4);
+//   background-color: $ice-white;
+// }
+// .cursor--gradient-hovered {
+//   background-color: $gradient-text;
+// }
+
+//Styling
+
+
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font: 112.5%/1.45em georgia, serif, sans-serif;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: $deep-black;
+  // cursor: none;
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $ice-white;
+  word-wrap: break-word;
+  font-kerning: normal;
+  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+  font-feature-settings: "kern", "liga", "clig", "calt";
+  overflow: hidden;
+  background-color: $deep-black;
+  // cursor: none;
+}
+a {
+  color: $ice-white;
+  background-color: transparent;
+  text-decoration: none;
+  -webkit-text-decoration-skip: objects;
+  // cursor: none;
+}
+h1 {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  font-family: forma-djr-banner, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  // text-rendering: optimizeSpeed;
+  font-size: 3rem;
+  line-height: 1.1;
+}
+h2 {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  font-family: forma-djr-micro, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  // text-rendering: optimizeSpeed;
+  font-size: 2.5rem;
+  line-height: 1.1;
+}
+h3 {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  font-family: eurostile-extended, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  // text-rendering: optimizeSpeed;
+  font-size: 2.75rem;
+  line-height: 1.1;
+}
+h4 {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  font-family: eurostile-extended, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  // text-rendering: optimizeSpeed;
+  font-size: 1rem;
+  line-height: 1.1;
+}
+@media only screen and (max-width: 480px) {
+  html {
+    font-size: 100%;
+  }
+}
