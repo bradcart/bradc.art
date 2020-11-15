@@ -1,12 +1,33 @@
+const { createProxyMiddleware } = require("http-proxy-middleware")
+
 module.exports = {
+  // for avoiding CORS while developing Netlify Functions locally
+  // read more: https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
+  developMiddleware: app => {
+    app.use(
+      "/.netlify/functions/",
+      createProxyMiddleware({
+        target: "http://localhost:9000",
+        pathRewrite: {
+          "/.netlify/functions/": "",
+        },
+      })
+    )
+  },
   siteMetadata: {
     title: `brad carter.`,
-    description: `Portfolio for Brad Carter - Austin, TX based frontend developer`,
+    description: `Portfolio for Brad Carter - Frontend Developer based in Austin, TX.`,
     author: `Brad Carter`,
   },
   plugins: [
     `gatsby-plugin-sass`,
     `gatsby-plugin-transition-link`,
+    {
+      resolve: "gatsby-plugin-preconnect",
+      options: {
+        domains: ["https://use.typekit.net/bbp3rrs.css"],
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -21,7 +42,15 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         typekit: {
-          id: 'bbp3rrs',
+          id: "bbp3rrs",
+        },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/,
         },
       },
     },

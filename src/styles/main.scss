@@ -1,14 +1,40 @@
 @import "components/layout";
 @import "components/navbar";
 @import "components/button";
+@import "components/gradient";
+@import "components/video-panels";
 @import "pages/index";
 @import "pages/projects";
 @import "pages/about";
+@import "pages/contact";
+@import "breakpoints/breakpoints";
 
 @font-face {
   font-family: "Hanson";
   src: url("../fonts/Hanson-Bold.otf") format("opentype");
 }
+
+// canvas {
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+//   z-index: 5;
+//   top: 0;
+//   pointer-events: none;
+//   overflow: hidden;
+// }
+
+// #gatsby-focus-wrapper {
+//   height: 100%;
+// }
+
+// canvas {
+//   display: block;
+//   position: fixed;
+//   z-index: -1;
+//   left: 0;
+//   top: 0;
+// }
 
 // .cursor {
 //   width: 30px;
@@ -37,17 +63,25 @@
 //   background-color: $gradient-text;
 // }
 
-//Styling
-
-
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font: 112.5%/1.45em georgia, serif, sans-serif;
+  // font: 112.5%/1.45em Helvetica, sans-serif;
   box-sizing: border-box;
   overflow: hidden;
   background-color: $deep-black;
+  @include media("<=phone") {
+    overflow-y: auto;
+  }
   // cursor: none;
 }
 body {
@@ -63,6 +97,9 @@ body {
   font-feature-settings: "kern", "liga", "clig", "calt";
   overflow: hidden;
   background-color: $deep-black;
+  @include media("<=phone") {
+    overflow-y: auto;
+  }
   // cursor: none;
 }
 a {
@@ -70,7 +107,10 @@ a {
   background-color: transparent;
   text-decoration: none;
   -webkit-text-decoration-skip: objects;
-  // cursor: none;
+  cursor: default;
+}
+svg {
+  display: block;
 }
 h1 {
   margin-left: 0;
@@ -84,9 +124,15 @@ h1 {
   font-family: forma-djr-banner, sans-serif;
   font-weight: 700;
   font-style: normal;
-  // text-rendering: optimizeSpeed;
-  font-size: 3rem;
-  line-height: 1.1;
+  line-height: 1.2;
+  font-size: calc(2rem + 2.25vw);
+  @include media("<=desktop") {
+    font-size: calc(2rem + 1.5vw);
+  }
+  @include media("<=phone") {
+    font-size: calc(1rem + 5vh);
+  }
+  // -webkit-text-stroke: 1px $deep-black;
 }
 h2 {
   margin-left: 0;
@@ -97,12 +143,22 @@ h2 {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 0;
-  font-family: forma-djr-micro, sans-serif;
-  font-weight: 400;
+  font-family: eurostile-extended, sans-serif;
+  font-weight: 900;
   font-style: normal;
-  // text-rendering: optimizeSpeed;
-  font-size: 2.5rem;
-  line-height: 1.1;
+  font-size: calc(3.25rem + 2.25vw);
+  @include media("<=desktop") {
+    font-size: calc(3rem + 1.75vw);
+  }
+  @include media("<=laptop") {
+    font-size: calc(2.75rem + 1.25vw);
+  }
+  @include media("<=phone") {
+    font-size: calc(2.5rem + 1vh);
+  }
+  @include media("<=sm-phone") {
+    font-size: calc(2rem + 0.5vh);
+  }
 }
 h3 {
   margin-left: 0;
@@ -116,9 +172,13 @@ h3 {
   font-family: eurostile-extended, sans-serif;
   font-weight: 900;
   font-style: normal;
-  // text-rendering: optimizeSpeed;
-  font-size: 2.75rem;
-  line-height: 1.1;
+  font-size: calc(2rem + 1.4vw);
+  @include media(">=tablet", "<=desktop") {
+    font-size: calc(1.75rem + 1vw);
+  }
+  @include media("<=phone") {
+    font-size: calc(1.45rem + 2.5vh);
+  }
 }
 h4 {
   margin-left: 0;
@@ -129,15 +189,64 @@ h4 {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 0;
-  font-family: eurostile-extended, sans-serif;
-  font-weight: 400;
+  font-family: forma-djr-banner, sans-serif;
+  font-weight: 700;
   font-style: normal;
-  // text-rendering: optimizeSpeed;
-  font-size: 1rem;
   line-height: 1.1;
+  font-size: calc(1.7rem + 1.15vw);
+  @include media("<=phone") {
+    font-size: calc(1.5rem + 0.55vh);
+  }
+  @include media("<=sm-phone") {
+    font-size: calc(1rem + 0.5vh);
+  }
 }
-@media only screen and (max-width: 480px) {
-  html {
-    font-size: 100%;
+h5 {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  font-family: forma-djr-banner, sans-serif;
+  font-weight: 500;
+  font-size: calc(1.35rem + 1.1vw);
+  @include media("<=phone") {
+    font-size: calc(1.25rem + 0.5vh);
+  }
+  @include media("<=sm-phone") {
+    font-size: calc(1rem + 0.5vh);
+  }
+}
+h6 {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  font-family: eurostile-extended, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  line-height: 1.05;
+  font-size: calc(2.25rem + 2.5vw);
+}
+p {
+  font-family: forma-djr-display, sans-serif;
+  font-style: italic;
+  line-height: 1.15;
+  font-size: calc(1.5rem + 1.25vw);
+  @include media("<=desktop") {
+    font-size: calc(1.5rem + 1vw);
+  }
+  @include media("<=phone") {
+    font-size: calc(1.25rem + 0.5vh);
+  }
+  @include media("<=sm-phone") {
+    font-size: calc(1rem + 0.5vh);
   }
 }

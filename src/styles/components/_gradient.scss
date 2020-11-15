@@ -1,0 +1,16 @@
+@import "../helpers/variables";
+
+.gradient-div {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  mix-blend-mode: hue;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gradient-img {
+  object-fit: cover;
+  pointer-events: none;
+}

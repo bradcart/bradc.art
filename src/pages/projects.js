@@ -1,21 +1,27 @@
-import React, { useState, useEffect, useRef } from "react"
-import { InView } from "react-intersection-observer"
+import React, { useState } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import ReactoryCard from "../components/card1"
-import HiveCard from "../components/card2"
-import CryptoCard from "../components/card3"
+import VideoCanvas from "../components/video-canvas"
+import Panel from "../components/panel"
 // import {
-//   motion,
-//   AnimatePresence,
 //   useCycle,
 //   useViewportScroll,
 // } from "framer-motion"
-// import { Transition } from "react-transition-group"
+import { motion, AnimatePresence } from "framer-motion"
+import ChevronBigLeft from "../assets/chevron_big_left.svg"
+// import ChevronLeft from "../assets/chevron_left.svg"
+import ChevronBigRight from "../assets/chevron_big_right.svg"
+// import ChevronRight from "../assets/chevron_right.svg"
+// import { TransitionLink } from "gatsby-plugin-transition-link/components/TransitionLink"
 
-const ProjectsPage = () => {
-  const [selectedCard, changeSelectedCard] = useState(1)
-  const scrollWindow = document.querySelector(".project-menu")
+
+const ProjectsPage = ({ transitionStatus, entry }) => {
+  // const [selectedPage, changeSelectedPage] = useState("web")
+  // const [selectedCard, changeSelectedCard] = useState(1)
+  // const scrollWindow = document.querySelector(".project-menu")
+  // const handlePageChange = value => {
+  //   changeSelectedPage(value)
+  // }
   // function usePrevious(value) {
   //   const ref = useRef()
   //   useEffect(() => {
@@ -27,132 +33,90 @@ const ProjectsPage = () => {
   //   console.log(selectedCard)
   // }, [])
   // const prevCard = usePrevious(selectedCard)
+  const [panel, changePanel] = useState(1)
+  const [forwardDirection, toggleForwardDirection] = useState(true)
+  function nextPanel() {
+    if (panel < 3) {
+      changePanel(panel + 1)
+      toggleForwardDirection(true)
+    }
+  }
+  function prevPanel() {
+    if (panel > 1) {
+      changePanel(panel - 1)
+      toggleForwardDirection(false)
+    }
+  }
+
+  // const controls = useAnimation()
   // const variants = {
   //   enter: {
-  //     y: selectedCard > 1 ? -1000 : 0,
+  //     x: forwardDirection ? 1000 : -1000,
   //   },
   //   center: {
-  //     y: 0,
+  //     x: 0,
   //   },
   //   exit: {
-  //     y: selectedCard > 1 ? 1000 : -1000,
+  //     x: forwardDirection ? -1000 : 1000,
   //   },
   // }
+
   return (
     <Layout page="projects">
       {/* <div className={`overlay-4`} /> */}
       <SEO title="projects" />
-      <div className="project-menu">
-        <div className="project-menu-sidebar">
-          <div className="nav-list">
-            <div
-              className={`nav-list${
-                selectedCard === 1 ? "-active" : "-inactive"
-              }`}
-              onClick={() => {
-                changeSelectedCard(1)
-                scrollWindow.scrollTo(0, 0)
-              }}
-            >
-              Reactory
+      <motion.div
+        className="project-menu"
+        initial={entry.state}
+        animate={
+          transitionStatus === "exiting" ? { x: window.innerWidth } : { x: 0 }
+        }
+        transition={{ duration: 0.4 }}
+      >
+        <motion.div
+          className={panel > 1 ? "chevron-left" : "chevron-left-disabled"}
+          onClick={() => prevPanel()}
+          whileTap={panel > 1 ? { scale: 0.9 } : { scale: 1 }}
+          whileHover={panel > 1 ? { scale: 1.2 } : { scale: 1 }}
+        >
+          <ChevronBigLeft />
+        </motion.div>
+        <a
+          href={
+            panel === 1
+              ? "https://youtu.be/VmIQeYBJmB4"
+              : panel === 2
+              ? "https://youtu.be/IyU55GfZfGo"
+              : "https://www.linkedin.com/in/brad-t-carter/"
+          }
+          target="_blank"
+          rel="noreferrer"
+          className="project-link"
+        >
+          <div className="canvas-wrapper">
+            <div className="canvas-subtitle">
+              <h2 className="subtitle-text">
+                {panel === 1
+                  ? "WEBSITE BUILDER"
+                  : panel === 2
+                  ? "PORTFOLIO TRACKER"
+                  : "GROUP CHAT"}
+              </h2>
             </div>
-            <div
-              className={`nav-list${
-                selectedCard === 2 ? "-active" : "-inactive"
-              }`}
-              onClick={() => {
-                changeSelectedCard(2)
-                scrollWindow.scrollTo(0, 650)
-              }}
-            >
-              Hive
-            </div>
-            <div
-              className={`nav-list${
-                selectedCard === 3 ? "-active" : "-inactive"
-              }`}
-              onClick={() => {
-                changeSelectedCard(3)
-                scrollWindow.scrollTo(0, 1310)
-              }}
-            >
-              Crypto Butler
-            </div>
+            <VideoCanvas>
+              <Panel panel={panel} />
+            </VideoCanvas>
           </div>
-        </div>
-        <div className="project-menu-right">
-          <InView
-            as="div"
-            onChange={() => changeSelectedCard(1)}
-            threshold={0.7}
-          >
-            <ReactoryCard />
-          </InView>
-          <InView
-            as="div"
-            onChange={() => changeSelectedCard(2)}
-            threshold={0.9}
-          >
-            <HiveCard />
-          </InView>
-          <InView
-            as="div"
-            onChange={() => changeSelectedCard(3)}
-            threshold={0.9}
-          >
-            <CryptoCard />
-          </InView>
-        </div>
-        {/* <AnimatePresence exitBeforeEnter>
-          {selectedCard === 1 ? (
-            <motion.div
-              className="project-menu-card"
-              key="card1"
-              // variants={variants}
-              initial={{ x: prevCard > 1 ? 2000 : 0 }}
-              animate={{ x: 0 }}
-              exit={{ x: 2000 }}
-              transition={{ duration: 0.55, bounce: 0 }}
-            >
-              <ReactoryCard />
-            </motion.div>
-          ) : selectedCard === 2 ? (
-            <motion.div
-              className="project-menu-card"
-              key="card2"
-              // variants={variants}
-              initial={{ x: 2000 }}
-              animate={{ x: 0 }}
-              exit={{ x: 2000 }}
-              transition={{ duration: 0.55, bounce: 0 }}
-            >
-              <HiveCard />
-            </motion.div>
-          ) : selectedCard === 3 ? (
-            <motion.div
-              className="project-menu-card"
-              key="card3"
-              // variants={variants}
-              initial={{ x: 2000 }}
-              animate={{ x: 0 }}
-              exit={{ x: 2000 }}
-              transition={{ duration: 0.55, bounce: 0 }}
-            >
-              <CryptoCard />
-            </motion.div>
-          ) : null}
-        </AnimatePresence> */}
-        {/* <Transition in={entered} timeout={500} unmountOnExit>
-          <div className="info-card-wrapper">
-            <InfoCard />
-          </div>
-        </Transition> */}
-        {/* {arrowPosition === 2 ? (
-          <div className="video-wrapper" id={entered ? "blurred" : null}>
-            <ProjectVideo project="Reactory" />
-          </div>
-        ) : null} */}
-      </div>
+        </a>
+        <motion.div
+          className={panel < 3 ? "chevron-right" : "chevron-right-disabled"}
+          onClick={() => nextPanel()}
+          whileTap={panel < 3 ? { scale: 0.9 } : { scale: 1 }}
+          whileHover={panel < 3 ? { scale: 1.2 } : { scale: 1 }}
+        >
+          <ChevronBigRight />
+        </motion.div>
+      </motion.div>
     </Layout>
   )
 }

@@ -1,105 +1,124 @@
 @import "../helpers/variables";
-@import "../components/card";
 @import "../components/video";
 
 .project-menu {
-  height: 97.5vh;
-  // margin: 5%;
-  padding-top: 12.5vh;
+  height: 100%;
+  // max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  // padding-top: 5vh;
+  z-index: 7;
   display: grid;
-  grid-template-columns: 1fr 7fr;
-  grid-template-rows: 100%;
-  justify-items: center;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  // place-items: center;
+  grid-template-rows: 12.5% 75% 12.5%;
+  grid-template-columns: 12.5% 75% 12.5%;
+  place-items: center;
 }
-.project-menu-sidebar {
-  grid-column: 1;
-  position: sticky;
-  top: 0;
-}
-.nav-list {
-  padding-top: 2%;
-  font: {
-    family: forma-djr-banner, sans-serif;
-    weight: 700;
-    style: normal;
-    size: 1.275rem;
-  }
-  &-active {
-    color: $ice-white;
-    cursor: default;
-    line-height: 1.5;
-  }
-  &-inactive {
-    color: $ice-white-disabled;
-    cursor: pointer;
-    line-height: 1.5;
-    transition: 0.3s;
-    &:hover {
-      color: $ice-white;
-    }
-  }
-}
-.project-menu-right {
-  width: 90%;
-  padding-right: 1%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  row-gap: 15%;
+.chevron-left {
+  grid-row: 2;
+  width: 100%;
+  display: flex;
   justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
 }
-// .overlay-4 {
-//   position: absolute;
-//   width: 80%;
-//   height: 100%;
-//   z-index: 5;
-//   background: {
-//     image: url("../images/plastic1-tiny.jpg");
-//     size: 50%;
-//     repeat: no-repeat;
-//     position: left center;
+.chevron-left-disabled {
+  @extend .chevron-left;
+  opacity: 0.1;
+}
+.project-link {
+  grid-row: 2;
+  align-self: center;
+  grid-column: 2;
+  width: 100%;
+  height: 100%;
+}
+.canvas-wrapper {
+  grid-row: 2;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+.canvas-wrapper:hover .canvas-subtitle {
+  opacity: 1;
+  transition: 0.3s ease;
+}
+.canvas-subtitle {
+  opacity: 0;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  cursor: pointer;
+}
+.subtitle-text {
+  font-family: forma-djr-banner, sans-serif;
+  font-weight: 900;
+}
+.chevron-right {
+  grid-row: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.chevron-right-disabled {
+  @extend .chevron-right;
+  opacity: 0.1;
+}
+
+// .project-menu {
+//   height: 87.5vh;
+//   // margin: 5%;
+//   padding-top: 12.5vh;
+//   display: grid;
+//   grid-template-columns: 1fr 7fr;
+//   grid-template-rows: 100%;
+//   justify-items: center;
+//   // overflow-y: scroll;
+//   scroll-behavior: smooth;
+//   // place-items: center;
+// }
+// .project-menu-sidebar {
+//   grid-column: 1;
+//   position: sticky;
+//   top: 0;
+// }
+// .nav-list {
+//   padding-top: 2%;
+//   font: {
+//     family: forma-djr-banner, sans-serif;
+//     weight: 700;
+//     style: normal;
+//     size: 1.275rem;
 //   }
-//   mix-blend-mode: hue;
-//   pointer-events: none;
+//   &-active {
+//     color: $ice-white;
+//     cursor: default;
+//     line-height: 1.5;
+//   }
+//   &-inactive {
+//     color: $ice-white-disabled;
+//     cursor: pointer;
+//     line-height: 1.5;
+//     transition: 0.3s;
+//     &:hover {
+//       color: $ice-white;
+//     }
+//   }
 // }
 // .project-menu-right {
-//   grid-column-start: 2;
+//   width: 100%;
+//   height: 95%;
+//   // padding-right: 1%;
+//   // display: grid;
+//   // grid-template-columns: 1fr;
+//   // grid-template-rows: 1fr 1fr 1fr;
+//   // row-gap: 15%;
+//   // justify-content: center;
 // }
-// .info-card-wrapper {
-//   grid-column-start: 2;
-//   height: 100%;
-//   width: 50vw;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-// .video-wrapper {
-//   grid-column-start: 1;
-//   position: absolute;
-//   right: 0;
-//   bottom: 0;
-//   width: 50vw;
-//   height: 103vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   pointer-events: none;
-//   transition: 0.5s;
-//   // padding-left: 2.5%;
-// }
-// #blurred {
-//   filter: blur(3px) brightness(0.5);
-// }
-
-// .project-menu-gif {
-//   width: 520px;
-//   height: 262px;
-//   position: relative;
-//   bottom: 2.5%;
-// }
-// .demo-gif {
-//   transform: scale(1.2);
+// .project-card-wrapper {
+//   width: 100%;
 // }

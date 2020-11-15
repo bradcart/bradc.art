@@ -1,77 +1,20 @@
 @import "../helpers/variables";
 
-@mixin gradient-overlay($img) {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  z-index: 5;
-  background: {
-    image: $img;
-    repeat: no-repeat;
-    position: center;
-    size: cover;
-  }
-  // filter: hue-rotate($hue);
-  // -webkit-filter: hue-rotate($hue);
-  // transition: 0.5s ease-out;
-  mix-blend-mode: hue;
-  pointer-events: none;
-  overflow: hidden;
-  // transform: translateZ(0);
-  // backface-visibility: hidden;
-  // perspective: 1000;
-  // will-change: transform;
-}
-.overlay-one {
-  @include gradient-overlay(url("../images/plastic1-tiny.jpg"));
-}
-.overlay-2 {
-  @include gradient-overlay(url("../images/plastic2-tiny.jpg"));
-}
-.overlay-3 {
-  @include gradient-overlay(url("../images/plastic3-tiny.jpg"));
-}
-.overlay--about {
-  @include gradient-overlay(url("../images/plastic1-tiny.jpg"));
-  mix-blend-mode: hue;
-  width: 50vw;
-  height: 30vh;
-  left: 0;
-  bottom: 0;
-  opacity: 1;
-}
-
-.overlay-1 {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  z-index: 5;
-  background: {
-    image: url("../images/plastic1-tiny.jpg");
-    repeat: no-repeat;
-    position: center;
-    size: cover;
-  }
-  // filter: hue-rotate($hue);
-  // -webkit-filter: hue-rotate($hue);
-  // transition: 0.5s ease-out;
-  mix-blend-mode: hue;
-  pointer-events: none;
-  overflow: hidden;
-}
-
 .background {
-  // position: relative;
   height: 100vh;
   width: 100vw;
-  // z-index: 2;
-  background: $deep-black;
+  background-color: $deep-black;
+  // background-image: url("../images/vinyl-texture.png");
+  // background-image: url("../images/warped-gradient.jpg");
+  // background-blend-mode: color-dodge;
+  // background-position: center;
+  // background-size: cover;
   overflow: hidden;
 }
 
 .film-grain {
   position: fixed;
-  z-index: 7;
+  z-index: 10;
   width: 200vw;
   height: 200vh;
   left: -50%;
@@ -79,13 +22,16 @@
   overflow: hidden;
   background-image: url("../images/grain.png");
   mix-blend-mode: overlay;
-  opacity: 0.5;
+  opacity: 0.4;
   animation: grain 1.5s steps(6) infinite;
   pointer-events: none;
   transform: translateZ(0);
-  // backface-visibility: hidden;
-  // perspective: 1000;
   // will-change: transform;
+}
+.film-grain-lite {
+  @extend .film-grain;
+  mix-blend-mode: soft-light;
+  opacity: 0.3;
 }
 @keyframes grain {
   0%,
