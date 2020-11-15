@@ -14,7 +14,6 @@ import ChevronBigRight from "../assets/chevron_big_right.svg"
 // import ChevronRight from "../assets/chevron_right.svg"
 // import { TransitionLink } from "gatsby-plugin-transition-link/components/TransitionLink"
 
-
 const ProjectsPage = ({ transitionStatus, entry }) => {
   // const [selectedPage, changeSelectedPage] = useState("web")
   // const [selectedCard, changeSelectedCard] = useState(1)
@@ -65,58 +64,60 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
     <Layout page="projects">
       {/* <div className={`overlay-4`} /> */}
       <SEO title="projects" />
-      <motion.div
-        className="project-menu"
-        initial={entry.state}
-        animate={
-          transitionStatus === "exiting" ? { x: window.innerWidth } : { x: 0 }
-        }
-        transition={{ duration: 0.4 }}
-      >
+      {typeof window !== `undefined` && (
         <motion.div
-          className={panel > 1 ? "chevron-left" : "chevron-left-disabled"}
-          onClick={() => prevPanel()}
-          whileTap={panel > 1 ? { scale: 0.9 } : { scale: 1 }}
-          whileHover={panel > 1 ? { scale: 1.2 } : { scale: 1 }}
-        >
-          <ChevronBigLeft />
-        </motion.div>
-        <a
-          href={
-            panel === 1
-              ? "https://youtu.be/VmIQeYBJmB4"
-              : panel === 2
-              ? "https://youtu.be/IyU55GfZfGo"
-              : "https://www.linkedin.com/in/brad-t-carter/"
+          className="project-menu"
+          initial={entry.state}
+          animate={
+            transitionStatus === "exiting" ? { x: window.innerWidth } : { x: 0 }
           }
-          target="_blank"
-          rel="noreferrer"
-          className="project-link"
+          transition={{ duration: 0.4 }}
         >
-          <div className="canvas-wrapper">
-            <div className="canvas-subtitle">
-              <h2 className="subtitle-text">
-                {panel === 1
-                  ? "WEBSITE BUILDER"
-                  : panel === 2
-                  ? "PORTFOLIO TRACKER"
-                  : "GROUP CHAT"}
-              </h2>
+          <motion.div
+            className={panel > 1 ? "chevron-left" : "chevron-left-disabled"}
+            onClick={() => prevPanel()}
+            whileTap={panel > 1 ? { scale: 0.9 } : { scale: 1 }}
+            whileHover={panel > 1 ? { scale: 1.2 } : { scale: 1 }}
+          >
+            <ChevronBigLeft />
+          </motion.div>
+          <a
+            href={
+              panel === 1
+                ? "https://youtu.be/VmIQeYBJmB4"
+                : panel === 2
+                ? "https://youtu.be/IyU55GfZfGo"
+                : "https://www.linkedin.com/in/brad-t-carter/"
+            }
+            target="_blank"
+            rel="noreferrer"
+            className="project-link"
+          >
+            <div className="canvas-wrapper">
+              <div className="canvas-subtitle">
+                <h2 className="subtitle-text">
+                  {panel === 1
+                    ? "WEBSITE BUILDER"
+                    : panel === 2
+                    ? "PORTFOLIO TRACKER"
+                    : "GROUP CHAT"}
+                </h2>
+              </div>
+              <VideoCanvas>
+                <Panel panel={panel} />
+              </VideoCanvas>
             </div>
-            <VideoCanvas>
-              <Panel panel={panel} />
-            </VideoCanvas>
-          </div>
-        </a>
-        <motion.div
-          className={panel < 3 ? "chevron-right" : "chevron-right-disabled"}
-          onClick={() => nextPanel()}
-          whileTap={panel < 3 ? { scale: 0.9 } : { scale: 1 }}
-          whileHover={panel < 3 ? { scale: 1.2 } : { scale: 1 }}
-        >
-          <ChevronBigRight />
+          </a>
+          <motion.div
+            className={panel < 3 ? "chevron-right" : "chevron-right-disabled"}
+            onClick={() => nextPanel()}
+            whileTap={panel < 3 ? { scale: 0.9 } : { scale: 1 }}
+            whileHover={panel < 3 ? { scale: 1.2 } : { scale: 1 }}
+          >
+            <ChevronBigRight />
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
     </Layout>
   )
 }

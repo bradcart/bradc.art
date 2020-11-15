@@ -144,79 +144,81 @@ const IndexPage = () => {
                       </h1>
                     </div>
                   </div>
-                  <div className="main-menu-lower-left">
-                    <motion.h3
-                      layout
-                      transition={{ type: "spring", bounce: 0 }}
-                      className="mmo-selector"
-                      id={`position-${arrowPosition}`}
-                    >
-                      &#62;&#62;
-                    </motion.h3>
-                    <TransitionLink
-                      id="projects-link"
-                      to="projects"
-                      exit={{
-                        length: 0.4,
-                        state: { x: -window.innerWidth, opacity: 0 },
-                      }}
-                      entry={{
-                        delay: 0.4,
-                        state: { x: window.innerWidth },
-                      }}
-                    >
-                      <h3
-                        onMouseOver={() => changeArrowPosition(1)}
-                        className={
-                          arrowPosition === 1 ? "active-link" : "outline"
-                        }
+                  {typeof window !== `undefined` && (
+                    <div className="main-menu-lower-left">
+                      <motion.h3
+                        layout
+                        transition={{ type: "spring", bounce: 0 }}
+                        className="mmo-selector"
+                        id={`position-${arrowPosition}`}
                       >
-                        Projects
-                      </h3>
-                    </TransitionLink>
-                    <TransitionLink
-                      id="about-me-link"
-                      to="about"
-                      exit={{
-                        length: 0.4,
-                        state: { x: window.innerWidth, opacity: 0 },
-                      }}
-                      entry={{
-                        delay: 0.4,
-                        state: { x: -window.innerWidth },
-                      }}
-                    >
-                      <h3
-                        onMouseOver={() => changeArrowPosition(2)}
-                        className={
-                          arrowPosition === 2 ? "active-link" : "outline"
-                        }
+                        &#62;&#62;
+                      </motion.h3>
+                      <TransitionLink
+                        id="projects-link"
+                        to="projects"
+                        exit={{
+                          length: 0.4,
+                          state: { x: -window.innerWidth, opacity: 0 },
+                        }}
+                        entry={{
+                          delay: 0.4,
+                          state: { x: window.innerWidth },
+                        }}
                       >
-                        About me
-                      </h3>
-                    </TransitionLink>
-                    <TransitionLink
-                      id="contact-link"
-                      to="contact"
-                      exit={{
-                        length: 0.4,
-                        state: { y: -window.innerHeight, opacity: 0 },
-                      }}
-                      entry={{
-                        delay: 0.4,
-                        state: { y: window.innerHeight },
-                      }}
-                    >
-                      <h3
-                        onMouseOver={() => changeArrowPosition(3)}
-                        className={
-                          arrowPosition === 3 ? "active-link" : "outline"
-                        }
+                        <h3
+                          onMouseOver={() => changeArrowPosition(1)}
+                          className={
+                            arrowPosition === 1 ? "active-link" : "outline"
+                          }
+                        >
+                          Projects
+                        </h3>
+                      </TransitionLink>
+                      <TransitionLink
+                        id="about-me-link"
+                        to="about"
+                        exit={{
+                          length: 0.4,
+                          state: { x: window.innerWidth, opacity: 0 },
+                        }}
+                        entry={{
+                          delay: 0.4,
+                          state: { x: -window.innerWidth },
+                        }}
                       >
-                        Contact
-                      </h3>
-                    </TransitionLink>
-                  </div>
+                        <h3
+                          onMouseOver={() => changeArrowPosition(2)}
+                          className={
+                            arrowPosition === 2 ? "active-link" : "outline"
+                          }
+                        >
+                          About me
+                        </h3>
+                      </TransitionLink>
+                      <TransitionLink
+                        id="contact-link"
+                        to="contact"
+                        exit={{
+                          length: 0.4,
+                          state: { y: -window.innerHeight, opacity: 0 },
+                        }}
+                        entry={{
+                          delay: 0.4,
+                          state: { y: window.innerHeight },
+                        }}
+                      >
+                        <h3
+                          onMouseOver={() => changeArrowPosition(3)}
+                          className={
+                            arrowPosition === 3 ? "active-link" : "outline"
+                          }
+                        >
+                          Contact
+                        </h3>
+                      </TransitionLink>
+                    </div>
+                  )}
                 </div>
                 <div className="main-menu-right">
                   {[...Array(9)].map((value, index) => (
