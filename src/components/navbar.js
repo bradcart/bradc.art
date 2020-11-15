@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { motion } from "framer-motion"
 import TransitionLink, { TransitionState } from "gatsby-plugin-transition-link"
 import ChevronDuoLeft from "../assets/chevron_duo_left.svg"
@@ -6,7 +6,6 @@ import LinkedInIcon from "../images/linkedin_icon.svg"
 // import ProjectsScreen from "../images/Projects-Screen-Invert.jpg"
 
 const Navbar = ({ page }) => {
-  const [windowDefined, toggleWindowDefined] = useState(false)
   // const [highlighted, changeHighlighted] = useState("web")
   // const exitDirection = () => {
   //   if (page === "about") {
@@ -15,11 +14,6 @@ const Navbar = ({ page }) => {
   //     return -500
   //   }
   // }
-  useEffect(() => {
-    if (typeof window !== `undefined`) {
-      toggleWindowDefined(true)
-    }
-  }, [])
   return (
     <>
       <TransitionState>
@@ -27,15 +21,15 @@ const Navbar = ({ page }) => {
           if (page !== "index") {
             return (
               <div className="navbar">
-                {windowDefined ? (
-                  <motion.div
-                    className="navbar-left"
-                    initial={{ x: -500 }}
-                    animate={
-                      transitionStatus === "exiting" ? { x: -500 } : { x: 0 }
-                    }
-                    transition={{ duration: 0.8 }}
-                  >
+                <motion.div
+                  className="navbar-left"
+                  initial={{ x: -500 }}
+                  animate={
+                    transitionStatus === "exiting" ? { x: -500 } : { x: 0 }
+                  }
+                  transition={{ duration: 0.8 }}
+                >
+                  {typeof window !== `undefined` && (
                     <TransitionLink
                       to="/"
                       entry={
@@ -63,9 +57,9 @@ const Navbar = ({ page }) => {
                         <ChevronDuoLeft />
                       </div>
                     </TransitionLink>
-                    <div id="navbar-title">brad carter.</div>
-                  </motion.div>
-                ) : null}
+                  )}
+                  <div id="navbar-title">brad carter.</div>
+                </motion.div>
                 <motion.div
                   className="navbar-right"
                   initial={{ x: 500 }}
