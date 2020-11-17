@@ -87,21 +87,19 @@ const ContactPage = ({ transitionStatus, entry }) => {
               name="name"
             />
           </label> */}
-            <label className="email-section">
-              <h3 className="my-email-is outline">email address:</h3>
-              <input
-                className="email-field"
-                ref={register({
-                  required: true,
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Invalid email address.",
-                  },
-                })}
-                type="text"
-                name="email"
-              />
-            </label>
+            <h3 className="my-email-is outline">email address:</h3>
+            <input
+              className="email-field"
+              ref={register({
+                required: true,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Invalid email address.",
+                },
+              })}
+              type="text"
+              name="email"
+            />
             <input className="btn" id="send" type="submit" value="send" />
           </form>
         </motion.div>

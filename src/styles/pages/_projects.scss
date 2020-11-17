@@ -36,26 +36,26 @@
   grid-row: 2;
   height: 100%;
   width: 100%;
-  position: relative;
+  // position: relative;
   cursor: pointer;
 }
-.canvas-wrapper:hover .canvas-subtitle {
-  opacity: 1;
-  transition: 0.3s ease;
-}
-.canvas-subtitle {
-  opacity: 0;
-  position: absolute;
-  top: 65%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  cursor: pointer;
-}
-.subtitle-text {
-  font-family: forma-djr-banner, sans-serif;
-  font-weight: 900;
-}
+// .canvas-wrapper:hover .canvas-subtitle {
+//   opacity: 1;
+//   transition: 0.3s ease;
+// }
+// .canvas-subtitle {
+//   opacity: 0;
+//   position: absolute;
+//   top: 65%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   z-index: 1;
+//   cursor: pointer;
+// }
+// .subtitle-text {
+//   font-family: forma-djr-banner, sans-serif;
+//   font-weight: 900;
+// }
 .chevron-right {
   grid-row: 2;
   width: 100%;

@@ -94,7 +94,7 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
             className="project-link"
           >
             <div className="canvas-wrapper">
-              <div className="canvas-subtitle">
+              {/* <div className="canvas-subtitle">
                 <h2 className="subtitle-text">
                   {panel === 1
                     ? "WEBSITE BUILDER"
@@ -102,7 +102,7 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
                     ? "PORTFOLIO TRACKER"
                     : "GROUP CHAT"}
                 </h2>
-              </div>
+              </div> */}
               <VideoCanvas>
                 <Panel panel={panel} />
               </VideoCanvas>

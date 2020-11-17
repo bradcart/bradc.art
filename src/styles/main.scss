@@ -1,3 +1,9 @@
+@import url("https://use.typekit.net/bbp3rrs.css");
+@font-face {
+  font-family: "Hanson";
+  src: url("../fonts/Hanson-Bold.otf") format("opentype");
+}
+
 @import "components/layout";
 @import "components/navbar";
 @import "components/button";
@@ -8,11 +14,6 @@
 @import "pages/about";
 @import "pages/contact";
 @import "breakpoints/breakpoints";
-
-@font-face {
-  font-family: "Hanson";
-  src: url("../fonts/Hanson-Bold.otf") format("opentype");
-}
 
 // canvas {
 //   width: 100%;
@@ -129,8 +130,11 @@ h1 {
   @include media("<=desktop") {
     font-size: calc(2rem + 1.5vw);
   }
+  // @include media("<=laptop") {
+  //   font-size: calc(1.25rem + 1.25vw);
+  // }
   @include media("<=phone") {
-    font-size: calc(1rem + 5vh);
+    font-size: calc(1rem + 3.25vh);
   }
   // -webkit-text-stroke: 1px $deep-black;
 }
@@ -173,11 +177,14 @@ h3 {
   font-weight: 900;
   font-style: normal;
   font-size: calc(2rem + 1.4vw);
-  @include media(">=tablet", "<=desktop") {
+  @include media("<=desktop") {
     font-size: calc(1.75rem + 1vw);
   }
+  @include media("<=laptop") {
+    font-size: calc(1rem + 1.5vw);
+  }
   @include media("<=phone") {
-    font-size: calc(1.45rem + 2.5vh);
+    font-size: calc(1rem + 2.25vh);
   }
 }
 h4 {
@@ -194,8 +201,11 @@ h4 {
   font-style: normal;
   line-height: 1.1;
   font-size: calc(1.7rem + 1.15vw);
+  @include media("<=desktop") {
+    font-size: calc(1rem + 1.1vw);
+  }
   @include media("<=phone") {
-    font-size: calc(1.5rem + 0.55vh);
+    font-size: calc(1.25rem + 0.55vh);
   }
   @include media("<=sm-phone") {
     font-size: calc(1rem + 0.5vh);
@@ -213,8 +223,11 @@ h5 {
   font-family: forma-djr-banner, sans-serif;
   font-weight: 500;
   font-size: calc(1.35rem + 1.1vw);
+  @include media("<=desktop") {
+    font-size: calc(1rem + 1.1vw);
+  }
   @include media("<=phone") {
-    font-size: calc(1.25rem + 0.5vh);
+    font-size: calc(1rem + 0.5vh);
   }
   @include media("<=sm-phone") {
     font-size: calc(1rem + 0.5vh);
@@ -234,6 +247,9 @@ h6 {
   font-style: normal;
   line-height: 1.05;
   font-size: calc(2.25rem + 2.5vw);
+  @include media("<=desktop") {
+    font-size: calc(1.5rem + 2vw);
+  }
 }
 p {
   font-family: forma-djr-display, sans-serif;
@@ -241,10 +257,10 @@ p {
   line-height: 1.15;
   font-size: calc(1.5rem + 1.25vw);
   @include media("<=desktop") {
-    font-size: calc(1.5rem + 1vw);
+    font-size: calc(1.25rem + 1vw);
   }
   @include media("<=phone") {
-    font-size: calc(1.25rem + 0.5vh);
+    font-size: calc(1rem + 0.3vh);
   }
   @include media("<=sm-phone") {
     font-size: calc(1rem + 0.5vh);

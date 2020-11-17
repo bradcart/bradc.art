@@ -2,11 +2,11 @@
 
 .contact-page {
   width: 100vw;
-  height: 97.5vh;
+  height: 100vh;
   padding-top: 2.5vh;
   margin: 0 auto;
   display: grid;
-  grid-template-rows: 20% 60% 20%;
+  grid-template-rows: 15% 70% 15%;
   grid-template-columns: 1fr;
   place-items: center;
 }
@@ -15,7 +15,7 @@
   width: 60%;
   height: 100%;
   display: grid;
-  grid-template-rows: 15% 50% 15% 20%;
+  grid-template-rows: 1fr 5fr 1fr 2fr;
   grid-template-columns: 40% 40% 1fr;
   row-gap: 2%;
   place-items: start;
@@ -103,15 +103,18 @@
 .email-section {
   @extend .name-section;
   grid-row: 3;
-  grid-column: 1 / span 2;
+  grid-column: 1;
   justify-self: start;
 }
 .my-email-is {
   @extend .my-name-is;
 }
 input[type="text"] {
+  grid-row: 3;
+  grid-column: 2 / span 2;
   width: 100%;
-  margin-right: -2.5%;
+  height: 100%;
+  // margin-right: -2.5%;
   margin-left: 2.5%;
   background-color: transparent;
   justify-self: flex-end;
@@ -134,7 +137,10 @@ input[type="text"] {
 }
 #send {
   font-size: 1.25rem;
-  grid-row: 3;
-  grid-column: 3;
+  grid-row: 4;
+  grid-column: 2;
   align-self: end;
+  @include media("<=laptop") {
+    font-size: calc(0.75rem + 1vw);
+  }
 }

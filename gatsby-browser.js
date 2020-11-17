@@ -5,3 +5,7 @@
  */
 
 // You can delete this file if you're not using it
+// import "./src/styles/main.scss"
+// import wrapPageComponent from "./src/wrapPageComponent"
+
+// export const wrapPageElement = wrapPageComponent

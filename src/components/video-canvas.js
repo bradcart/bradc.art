@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useState } from "react"
+import React, { Suspense } from "react"
 import { Canvas } from "react-three-fiber"
 import {
   EffectComposer,
@@ -6,8 +6,8 @@ import {
   Noise,
   Scanline,
 } from "@react-three/postprocessing"
-import { Loader } from "@react-three/drei/Loader"
-import { GlitchMode } from "postprocessing"
+// import { Loader } from "@react-three/drei/Loader"
+// import { GlitchMode } from "postprocessing"
 // import ProjectLinks from "./project-links"
 
 const VideoCanvas = ({ children }) => {
@@ -55,7 +55,6 @@ const VideoCanvas = ({ children }) => {
         /> */}
         </EffectComposer>
       </Canvas>
-      <Loader />
     </>
   )
 }

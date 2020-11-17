@@ -1,4 +1,5 @@
 const { createProxyMiddleware } = require("http-proxy-middleware")
+require("dotenv").config()
 
 module.exports = {
   // for avoiding CORS while developing Netlify Functions locally
@@ -28,6 +29,7 @@ module.exports = {
         domains: ["https://use.typekit.net/bbp3rrs.css"],
       },
     },
+    `gatsby-plugin-preload-fonts`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -39,14 +41,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: "gatsby-plugin-web-font-loader",
-      options: {
-        typekit: {
-          id: "bbp3rrs",
-        },
-      },
-    },
-    {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
@@ -57,17 +51,17 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Brad Carter | Frontend Developer`,
+        short_name: `Brad Carter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        background_color: `#080808`,
+        theme_color: `#F0F5F3`,
+        display: `fullscreen`,
+        icon: `src/images/bradcart-icon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }

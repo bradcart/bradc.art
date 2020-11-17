@@ -1,5 +1,7 @@
 import React from "react"
-import { useTexture, useAspect, meshBounds } from "@react-three/drei"
+import { useTexture } from "@react-three/drei/useTexture"
+import { useAspect } from "@react-three/drei/useAspect"
+import { meshBounds } from "@react-three/drei/meshBounds"
 import ReactoryPlaceholder from "../images/Reactory-Placeholder-3.jpg"
 import HivePlaceholder from "../images/Hive-Placeholder-3.jpg"
 import CryptoPlaceholder from "../images/Crypto-Placeholder-3.jpg"
@@ -12,7 +14,10 @@ const Panel = ({ panel }) => {
   const cScale = useAspect("cover", 1880, 1042)
   const hScale = useAspect("cover", 1917, 965)
   return (
-    <mesh raycast={meshBounds} scale={panel === 1 ? rScale : panel === 2 ? cScale : hScale}>
+    <mesh
+      raycast={meshBounds}
+      scale={panel === 1 ? rScale : panel === 2 ? cScale : hScale}
+    >
       <planeBufferGeometry attach="geometry" />
       <meshBasicMaterial
         attach="material"
