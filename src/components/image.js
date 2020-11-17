@@ -52,21 +52,21 @@ const Image = ({ src }) => {
       {src === 1 ? (
         <Img
           fluid={data.gradient1.childImageSharp.fluid}
-          // loading="eager"
+          loading="eager"
           alt="Projects gradient text"
           style={{ height: "100%", mixBlendMode: "inherit" }}
         />
       ) : src === 2 ? (
         <Img
           fluid={data.gradient2.childImageSharp.fluid}
-          // loading="eager"
+          loading="eager"
           alt="About Me gradient text"
           style={{ height: "100%", mixBlendMode: "inherit" }}
         />
       ) : src === 3 ? (
         <Img
           fluid={data.gradient3.childImageSharp.fluid}
-          // loading="eager"
+          loading="eager"
           alt="Contact gradient text"
           style={{ height: "100%", mixBlendMode: "inherit" }}
         />
