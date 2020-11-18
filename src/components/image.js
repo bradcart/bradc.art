@@ -18,21 +18,21 @@ const Image = ({ src }) => {
     query {
       gradient1: file(relativePath: { eq: "plastic1-tiny.jpg" }) {
         childImageSharp {
-          fluid(fit: COVER, maxWidth: 1440, quality: 50) {
+          fluid(fit: COVER, maxWidth: 1440, quality: 80) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       gradient2: file(relativePath: { eq: "plastic2-tiny.jpg" }) {
         childImageSharp {
-          fluid(fit: COVER, maxWidth: 1440, quality: 50) {
+          fluid(fit: COVER, maxWidth: 1440, quality: 80) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       gradient3: file(relativePath: { eq: "plastic3-tiny.jpg" }) {
         childImageSharp {
-          fluid(fit: COVER, maxWidth: 1440, quality: 50) {
+          fluid(fit: COVER, maxWidth: 1440, quality: 80) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -54,21 +54,21 @@ const Image = ({ src }) => {
           fluid={data.gradient1.childImageSharp.fluid}
           loading="eager"
           alt="Projects gradient text"
-          style={{ height: "100%", mixBlendMode: "inherit" }}
+          style={{ height: "100%", mixBlendMode: "hue" }}
         />
       ) : src === 2 ? (
         <Img
           fluid={data.gradient2.childImageSharp.fluid}
           loading="eager"
           alt="About Me gradient text"
-          style={{ height: "100%", mixBlendMode: "inherit" }}
+          style={{ height: "100%", mixBlendMode: "hue" }}
         />
       ) : src === 3 ? (
         <Img
           fluid={data.gradient3.childImageSharp.fluid}
           loading="eager"
           alt="Contact gradient text"
-          style={{ height: "100%", mixBlendMode: "inherit" }}
+          style={{ height: "100%", mixBlendMode: "hue" }}
         />
       ) : src === 8 ? (
         <Img

@@ -14,16 +14,34 @@ import SEO from "../components/seo"
 // import Effects from "../components/effects"
 // import GradientOne from "../images/plastic1-tiny.jpg"
 
-const IndexPage = () => {
-  const [arrowPosition, changeArrowPosition] = useState(1)
-  // const [contentLoaded, toggleContentLoaded] = useState(false)
+const MainMenuOverlay = ({ arrowPosition }) => (
+  <motion.div
+    key="overlay"
+    className="overlay-img"
+    initial={false}
+    animate={{
+      filter:
+        arrowPosition === 1
+          ? "hue-rotate(0deg)"
+          : arrowPosition === 2
+          ? "hue-rotate(120deg)"
+          : arrowPosition === 3
+          ? "hue-rotate(240deg)"
+          : null,
+    }}
+    transition={{ duration: 0.8 }}
+  >
+    {arrowPosition === 1 ? (
+      <Image src={1} />
+    ) : arrowPosition === 2 ? (
+      <Image src={2} />
+    ) : arrowPosition === 3 ? (
+      <Image src={3} />
+    ) : null}
+  </motion.div>
+)
 
-  // useEffect(() => {
-  //   toggleContentLoaded(true)
-  // }, [])
-
-  const dur = 0.8
-
+const MainMenuUpperLeft = ({ arrowPosition }) => {
   const title1 = "frontend"
   const title2 = "developer"
   const sentence = {
@@ -41,6 +59,75 @@ const IndexPage = () => {
     visible: { opacity: 1, y: 0, skew: 0, rotate: 0 },
   }
 
+  return (
+    <div className="main-menu-upper-left">
+      <div className="main-menu-header">
+        <h1 id="main-header">
+          hi! i'm brad carter, a <br />
+          <motion.span
+            key="frontend-developer"
+            variants={sentence}
+            initial="hidden"
+            animate="visible"
+          >
+            <span className="title-container">
+              {title1.split("").map((char, index) => {
+                return (
+                  <motion.span
+                    key={char + "-" + index}
+                    variants={letter}
+                    className="gradient-text-light"
+                  >
+                    {char}
+                  </motion.span>
+                )
+              })}
+            </span>{" "}
+            <span className="title-container">
+              {title2.split("").map((char, index) => {
+                return (
+                  <motion.span
+                    key={char + "-" + index}
+                    variants={letter}
+                    className="gradient-text-light"
+                  >
+                    {char}
+                  </motion.span>
+                )
+              })}
+            </span>
+          </motion.span>
+          <br /> based in austin, tx.
+        </h1>
+      </div>
+    </div>
+  )
+}
+
+const MainMenuRight = ({ arrowPosition }) => (
+  <div className="main-menu-right">
+    {[...Array(9)].map((value, index) => (
+      <h6 className="main-menu-right-text" key={index}>
+        {arrowPosition === 1
+          ? "PROJECTS"
+          : arrowPosition === 2
+          ? "ABOUT ME"
+          : arrowPosition === 3
+          ? "CONTACT"
+          : null}
+      </h6>
+    ))}
+  </div>
+)
+
+const IndexPage = () => {
+  const [arrowPosition, changeArrowPosition] = useState(1)
+  // const [contentLoaded, toggleContentLoaded] = useState(false)
+
+  // useEffect(() => {
+  //   toggleContentLoaded(true)
+  // }, [])
+
   // const [loading, toggleLoading] = useState(true)
   // const { countUp } = useCountUp({
   //   end: 100,
@@ -49,198 +136,109 @@ const IndexPage = () => {
   // })
 
   return (
-    <>
-      {/* {loading ? (
-        <div className="loading-screen-container">
-          <div className="film-grain" />
-          <div id="loading-screen-numbers">{countUp}</div>
-        </div>
-      ) : ( */}
-      <Layout page="index">
-        <TransitionState>
-          {({ mount, transitionStatus, entry, exit }) => {
-            const exitState = exit.state
-            const exitDuration = exit.length
-            return (
-              <>
-                <motion.div
-                  key="overlay"
-                  className="overlay-img"
-                  initial={false}
-                  animate={{
-                    filter:
-                      arrowPosition === 1
-                        ? "hue-rotate(0deg"
-                        : arrowPosition === 2
-                        ? "hue-rotate(120deg)"
-                        : arrowPosition === 3
-                        ? "hue-rotate(240deg)"
-                        : null,
-                  }}
-                  transition={{ duration: dur }}
-                >
-                  {arrowPosition === 1 ? (
-                    <Image src={1} />
-                  ) : arrowPosition === 2 ? (
-                    <Image src={2} />
-                  ) : arrowPosition === 3 ? (
-                    <Image src={3} />
-                  ) : null}
-                </motion.div>
-                <motion.div
-                  className="main-menu"
-                  key="main-wrapper"
-                  initial={entry.state || { opacity: 0 }}
-                  animate={
-                    transitionStatus === "exiting"
-                      ? exitState
-                      : { opacity: 1, x: 0, y: 0 }
-                  }
-                  transition={
-                    transitionStatus === "exiting"
-                      ? { duration: exitDuration }
-                      : { duration: 0.4 }
-                  }
-                >
-                  <SEO title="Home" />
-                  <div className="main-menu-left">
-                    <div className="main-menu-upper-left">
-                      <div className="main-menu-header">
-                        <h1 id="main-header">
-                          hi! i'm brad carter, a <br />
-                          <motion.span
-                            key="frontend-developer"
-                            variants={sentence}
-                            initial="hidden"
-                            animate="visible"
-                          >
-                            <span className="title-container">
-                              {title1.split("").map((char, index) => {
-                                return (
-                                  <motion.span
-                                    key={char + "-" + index}
-                                    variants={letter}
-                                    className="gradient-text-light"
-                                  >
-                                    {char}
-                                  </motion.span>
-                                )
-                              })}
-                            </span>{" "}
-                            <span className="title-container">
-                              {title2.split("").map((char, index) => {
-                                return (
-                                  <motion.span
-                                    key={char + "-" + index}
-                                    variants={letter}
-                                    className="gradient-text-light"
-                                  >
-                                    {char}
-                                  </motion.span>
-                                )
-                              })}
-                            </span>
-                          </motion.span>
-                          <br /> based in austin, tx.
-                        </h1>
-                      </div>
-                    </div>
-                    {typeof window !== `undefined` && (
-                      <div className="main-menu-lower-left">
-                        <motion.h3
-                          layout
-                          transition={{ type: "spring", bounce: 0 }}
-                          className="mmo-selector"
-                          id={`position-${arrowPosition}`}
-                        >
-                          &#62;&#62;
-                        </motion.h3>
-                        <TransitionLink
-                          id="projects-link"
-                          to="projects"
-                          exit={{
-                            length: 0.4,
-                            state: { x: -window.innerWidth, opacity: 0 },
-                          }}
-                          entry={{
-                            delay: 0.4,
-                            state: { x: window.innerWidth },
-                          }}
-                        >
-                          <h3
-                            onMouseOver={() => changeArrowPosition(1)}
-                            className={
-                              arrowPosition === 1 ? "active-link" : "outline"
-                            }
-                          >
-                            Projects
-                          </h3>
-                        </TransitionLink>
-                        <TransitionLink
-                          id="about-me-link"
-                          to="about"
-                          exit={{
-                            length: 0.4,
-                            state: { x: window.innerWidth, opacity: 0 },
-                          }}
-                          entry={{
-                            delay: 0.4,
-                            state: { x: -window.innerWidth },
-                          }}
-                        >
-                          <h3
-                            onMouseOver={() => changeArrowPosition(2)}
-                            className={
-                              arrowPosition === 2 ? "active-link" : "outline"
-                            }
-                          >
-                            About me
-                          </h3>
-                        </TransitionLink>
-                        <TransitionLink
-                          id="contact-link"
-                          to="contact"
-                          exit={{
-                            length: 0.4,
-                            state: { y: -window.innerHeight, opacity: 0 },
-                          }}
-                          entry={{
-                            delay: 0.4,
-                            state: { y: window.innerHeight },
-                          }}
-                        >
-                          <h3
-                            onMouseOver={() => changeArrowPosition(3)}
-                            className={
-                              arrowPosition === 3 ? "active-link" : "outline"
-                            }
-                          >
-                            Contact
-                          </h3>
-                        </TransitionLink>
-                      </div>
-                    )}
-                  </div>
-                  <div className="main-menu-right">
-                    {[...Array(9)].map((value, index) => (
-                      <h6 className="main-menu-right-text" key={index}>
-                        {arrowPosition === 1
-                          ? "PROJECTS"
-                          : arrowPosition === 2
-                          ? "ABOUT ME"
-                          : arrowPosition === 3
-                          ? "CONTACT"
-                          : null}
-                      </h6>
-                    ))}
-                  </div>
-                </motion.div>
-              </>
-            )
-          }}
-        </TransitionState>
-      </Layout>
-    </>
+    <TransitionState>
+      {({ mount, transitionStatus, entry, exit }) => (
+        <Layout page="index">
+          <SEO title="Home" />
+          <MainMenuOverlay arrowPosition={arrowPosition} />
+          <motion.div
+            className="main-menu"
+            key="main-wrapper"
+            initial={entry.state}
+            animate={
+              transitionStatus === "exiting"
+                ? exit.state
+                : { opacity: 1, x: 0, y: 0 }
+            }
+            transition={
+              transitionStatus === "exiting"
+                ? { duration: exit.length }
+                : { duration: 0.4 }
+            }
+          >
+            <div className="main-menu-left">
+              <MainMenuUpperLeft arrowPosition={arrowPosition} />
+              {typeof window !== `undefined` && (
+                <div className="main-menu-lower-left">
+                  <motion.h3
+                    layout
+                    transition={{ type: "spring", bounce: 0 }}
+                    className="mmo-selector"
+                    id={`position-${arrowPosition}`}
+                  >
+                    &#62;&#62;
+                  </motion.h3>
+                  <TransitionLink
+                    id="projects-link"
+                    to="projects"
+                    exit={{
+                      length: 0.4,
+                      state: { x: -window.innerWidth, opacity: 0 },
+                    }}
+                    entry={{
+                      delay: 0.4,
+                      state: { x: window.innerWidth },
+                    }}
+                  >
+                    <h3
+                      onMouseOver={() => changeArrowPosition(1)}
+                      className={
+                        arrowPosition === 1 ? "active-link" : "outline"
+                      }
+                    >
+                      Projects
+                    </h3>
+                  </TransitionLink>
+                  <TransitionLink
+                    id="about-me-link"
+                    to="about"
+                    exit={{
+                      length: 0.4,
+                      state: { x: window.innerWidth, opacity: 0 },
+                    }}
+                    entry={{
+                      delay: 0.4,
+                      state: { x: -window.innerWidth },
+                    }}
+                  >
+                    <h3
+                      onMouseOver={() => changeArrowPosition(2)}
+                      className={
+                        arrowPosition === 2 ? "active-link" : "outline"
+                      }
+                    >
+                      About me
+                    </h3>
+                  </TransitionLink>
+                  <TransitionLink
+                    id="contact-link"
+                    to="contact"
+                    exit={{
+                      length: 0.4,
+                      state: { y: -window.innerHeight, opacity: 0 },
+                    }}
+                    entry={{
+                      delay: 0.4,
+                      state: { y: window.innerHeight },
+                    }}
+                  >
+                    <h3
+                      onMouseOver={() => changeArrowPosition(3)}
+                      className={
+                        arrowPosition === 3 ? "active-link" : "outline"
+                      }
+                    >
+                      Contact
+                    </h3>
+                  </TransitionLink>
+                </div>
+              )}
+            </div>
+            <MainMenuRight arrowPosition={arrowPosition} />
+          </motion.div>
+        </Layout>
+      )}
+    </TransitionState>
   )
 }
 
