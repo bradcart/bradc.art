@@ -25,9 +25,7 @@ const MainMenuOverlay = ({ arrowPosition }) => (
           ? "hue-rotate(0deg)"
           : arrowPosition === 2
           ? "hue-rotate(120deg)"
-          : arrowPosition === 3
-          ? "hue-rotate(240deg)"
-          : null,
+          : "hue-rotate(240deg)",
     }}
     transition={{ duration: 0.8 }}
   >
