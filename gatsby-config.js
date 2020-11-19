@@ -1,5 +1,4 @@
 const { createProxyMiddleware } = require("http-proxy-middleware")
-require("dotenv").config()
 
 module.exports = {
   // for avoiding CORS while developing Netlify Functions locally

@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import { useForm } from "react-hook-form"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Button from "../components/button"
+// import Button from "../components/button"
 // import WavingEmoji from "../assets/WavingEmoji.svg"
 
 const ContactPage = ({ transitionStatus, entry }) => {
@@ -17,7 +17,7 @@ const ContactPage = ({ transitionStatus, entry }) => {
     "TYPE A MESSAGE.",
     "ANY MESSAGE.",
     "have you used a keyboard before?",
-    "¡escribe tu mensaje aquí!",
+    "¡Escribe tu mensaje aquí!",
     "ここにメッセージを入力してください！",
     "Пишите ваше сообщение здесь!",
   ]
@@ -27,9 +27,34 @@ const ContactPage = ({ transitionStatus, entry }) => {
   const [value, setValue] = useState("")
   const [modal, toggleModal] = useState(false)
 
+  const endpoints = {
+    contact: "/.netlify/functions/sendEmail",
+  }
+  const axios = require("axios")
+
   const { register, handleSubmit, errors } = useForm()
   const onSubmit = values => {
-    console.log(values)
+    // console.log(values)
+    let { name, email, message } = values
+    let data = { name, email, message }
+    axios.post(endpoints.contact, JSON.stringify(data)).then(response => {
+      if (response.status !== 200) {
+        handleError()
+        console.log(response)
+      } else {
+        handleSuccess()
+        console.log(response)
+      }
+    })
+  }
+
+  const handleSuccess = () => {
+    toggleModal(false)
+    console.log("message sent!")
+  }
+
+  const handleError = () => {
+    console.log("error!")
   }
 
   return (
