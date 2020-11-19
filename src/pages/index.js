@@ -8,11 +8,13 @@ import TransitionLink, { TransitionState } from "gatsby-plugin-transition-link"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import useDeviceDetect from "../utils/useDeviceDetect"
 // import Text from "../components/text"
 // import NavHelper from "../images/nav-helper.svg"
 // import { Noise } from "@react-three/postprocessing"
 // import Effects from "../components/effects"
 // import GradientOne from "../images/plastic1-tiny.jpg"
+// import NoiseCanvas from "../components/noise-canvas"
 
 const MainMenuOverlay = ({ arrowPosition }) => (
   <motion.div
@@ -133,12 +135,14 @@ const IndexPage = () => {
   //   suffix: "%",
   // })
 
+  const { isMobile } = useDeviceDetect()
+
   return (
     <TransitionState>
       {({ mount, transitionStatus, entry, exit }) => (
         <Layout page="index">
           <SEO title="portfolio" />
-          <MainMenuOverlay arrowPosition={arrowPosition} />
+          {!isMobile ? <MainMenuOverlay arrowPosition={arrowPosition} /> : null}
           <motion.div
             className="main-menu"
             key="main-wrapper"

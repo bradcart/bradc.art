@@ -14,6 +14,7 @@ import PropTypes from "prop-types"
 import "../styles/main.scss"
 import "gatsby-plugin-purgecss"
 import Navbar from "./navbar"
+import useDeviceDetect from "../utils/useDeviceDetect"
 
 const Layout = ({ page, children }) => {
   // const data = useStaticQuery(graphql`
@@ -26,10 +27,14 @@ const Layout = ({ page, children }) => {
   //   }
   // `)
 
+  const { isMobile } = useDeviceDetect()
+
   return (
     <>
       <div className="background">
-        {/* {page !== "projects" ? <div className="film-grain" /> : null} */}
+        {!isMobile && page !== "projects" ? (
+          <div className="film-grain" />
+        ) : null}
         <Navbar page={page} />
         {/* <Cursor /> */}
         {/* <Header siteTitle="Brad Carter" /> */}

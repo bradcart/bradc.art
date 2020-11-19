@@ -27,6 +27,7 @@
     "gatsby-plugin-transition-link": "^1.20.5",
     "gatsby-source-filesystem": "^2.3.34",
     "gatsby-transformer-sharp": "^2.5.17",
+    "grained": "0.0.2",
     "gsap": "^3.5.1",
     "mailgun-js": "^0.22.0",
     "node-sass": "^4.14.1",

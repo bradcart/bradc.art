@@ -17,9 +17,9 @@ const ContactPage = ({ transitionStatus, entry }) => {
     "TYPE A MESSAGE.",
     "ANY MESSAGE.",
     "have you used a keyboard before?",
-    "¡Escribe tu mensaje aquí!",
-    "ここにメッセージを入力してください！",
-    "Пишите ваше сообщение здесь!",
+    "Escribe tu mensaje aquí",
+    "ここにメッセージを入力してください",
+    "Пишите ваше сообщение здесь",
   ]
 
   const [placeholderIndex, setPlaceholderIndex] = useState(0)
@@ -34,16 +34,13 @@ const ContactPage = ({ transitionStatus, entry }) => {
 
   const { register, handleSubmit, errors } = useForm()
   const onSubmit = values => {
-    // console.log(values)
     let { name, email, message } = values
     let data = { name, email, message }
     axios.post(endpoints.contact, JSON.stringify(data)).then(response => {
       if (response.status !== 200) {
         handleError()
-        console.log(response)
       } else {
         handleSuccess()
-        console.log(response)
       }
     })
   }
