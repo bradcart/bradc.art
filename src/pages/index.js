@@ -137,7 +137,7 @@ const IndexPage = () => {
     <TransitionState>
       {({ mount, transitionStatus, entry, exit }) => (
         <Layout page="index">
-          <SEO title="Home" />
+          <SEO title="portfolio" />
           <MainMenuOverlay arrowPosition={arrowPosition} />
           <motion.div
             className="main-menu"
@@ -178,14 +178,15 @@ const IndexPage = () => {
                       state: { x: window.innerWidth },
                     }}
                   >
-                    <h3
+                    <motion.h3
                       onMouseOver={() => changeArrowPosition(1)}
+                      onTapStart={() => changeArrowPosition(1)}
                       className={
                         arrowPosition === 1 ? "active-link" : "outline"
                       }
                     >
                       Projects
-                    </h3>
+                    </motion.h3>
                   </TransitionLink>
                   <TransitionLink
                     id="about-me-link"
@@ -199,14 +200,15 @@ const IndexPage = () => {
                       state: { x: -window.innerWidth },
                     }}
                   >
-                    <h3
+                    <motion.h3
                       onMouseOver={() => changeArrowPosition(2)}
+                      onTapStart={() => changeArrowPosition(2)}
                       className={
                         arrowPosition === 2 ? "active-link" : "outline"
                       }
                     >
                       About me
-                    </h3>
+                    </motion.h3>
                   </TransitionLink>
                   <TransitionLink
                     id="contact-link"
@@ -220,14 +222,15 @@ const IndexPage = () => {
                       state: { y: window.innerHeight },
                     }}
                   >
-                    <h3
+                    <motion.h3
                       onMouseOver={() => changeArrowPosition(3)}
+                      onTapStart={() => changeArrowPosition(3)}
                       className={
                         arrowPosition === 3 ? "active-link" : "outline"
                       }
                     >
                       Contact
-                    </h3>
+                    </motion.h3>
                   </TransitionLink>
                 </div>
               )}

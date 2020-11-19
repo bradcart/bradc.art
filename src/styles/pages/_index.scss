@@ -20,9 +20,10 @@
   height: 95%;
   width: 95%;
   padding: 2.5%;
+  // margin-top: 2.5%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr;
   grid-auto-rows: 1fr;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
@@ -30,21 +31,27 @@
   // justify-content: center;
   // align-content: center;
   align-items: center;
+  @include media("<=phone") {
+    
+  }
 }
 .main-menu-left {
   justify-self: end;
-  grid-row: 1 / span 2;
+  margin-top: -10vh;
+  grid-row: 1;
   grid-column: 1;
   display: grid;
-  grid-template-rows: 1fr 50%;
+  grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr;
-  height: 100%;
+  height: initial;
+  row-gap: 20%;
   @include media("<=desktop", ">=tablet") {
     height: initial;
     align-self: center;
   }
   @include media("<=phone") {
     place-self: center;
+    height: 60%;
     grid-template-rows: 50% 50%;
     grid-template-columns: 1fr;
   }
@@ -52,7 +59,7 @@
 .main-menu-upper-left {
   grid-column: 1;
   grid-row: 1;
-  align-self: center;
+  align-self: start;
   justify-self: center;
   // display: flex;
   // justify-content: center;
@@ -151,9 +158,9 @@
 }
 .main-menu-right {
   justify-self: start;
-  align-self: start;
+  align-self: center;
   grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-row: 1;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(9, 1fr);
