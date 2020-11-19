@@ -16,6 +16,25 @@
   }
 }
 
+%mobile-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mobile-gradient-1 {
+  @extend %mobile-gradient;
+  background: linear-gradient(90deg, #fdbb2d 0%, #3a1c71 100%);
+}
+
+.mobile-gradient-2 {
+  @extend %mobile-gradient;
+}
+
+.mobile-gradient-3 {
+  @extend %mobile-gradient;
+}
+
 .main-menu {
   height: 95%;
   width: 95%;
@@ -32,7 +51,6 @@
   // align-content: center;
   align-items: center;
   @include media("<=phone") {
-    
   }
 }
 .main-menu-left {

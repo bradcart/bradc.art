@@ -25,7 +25,7 @@
   opacity: 0.4;
   animation: grain 1.5s steps(6) infinite;
   pointer-events: none;
-  // transform: translateZ(0);
+  transform: translateZ(0);
   // will-change: transform;
 }
 .film-grain-lite {
