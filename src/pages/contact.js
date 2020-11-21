@@ -3,6 +3,8 @@ import { motion } from "framer-motion"
 import { useForm } from "react-hook-form"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Div100vh from "react-div-100vh"
+import { useTimeout } from "beautiful-react-hooks"
 // import Button from "../components/button"
 // import WavingEmoji from "../assets/WavingEmoji.svg"
 
@@ -26,6 +28,7 @@ const ContactPage = ({ transitionStatus, entry }) => {
   const placeholder = placeholderArray[placeholderIndex]
   const [value, setValue] = useState("")
   const [modal, toggleModal] = useState(false)
+  const [success, toggleSuccess] = useState(false)
 
   const endpoints = {
     contact: "/.netlify/functions/sendEmail",
@@ -47,122 +50,142 @@ const ContactPage = ({ transitionStatus, entry }) => {
 
   const handleSuccess = () => {
     toggleModal(false)
+    toggleSuccess(true)
     console.log("message sent!")
   }
 
   const handleError = () => {
+    // toggleError(true)
     console.log("error!")
   }
 
   return (
-    <Layout page="contact">
-      <SEO title="contact" />
-      {typeof window !== `undefined` && (
-        <motion.div
-          initial={entry.state}
-          animate={
-            transitionStatus === "exiting"
-              ? { y: window.innerHeight }
-              : { y: 0 }
-          }
-          transition={{ duration: 0.4 }}
-          className="contact-page"
-        >
-          {modal ? (
-            <motion.div
-              className="backdrop"
-              onClick={() => toggleModal(false)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
-            />
-          ) : null}
-          <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
-            <h3 className="contact-form-header outline">
-              {greeting}{" "}
-              <span id="wave-emoji" role="img" aria-label="Email emoji">
-                ✉️
-              </span>
-            </h3>
-            {/* <div className="error-section">
+    <Div100vh>
+      <Layout page="contact">
+        <SEO title="contact" />
+        {typeof window !== `undefined` && (
+          <motion.div
+            initial={entry.state}
+            animate={
+              transitionStatus === "exiting"
+                ? { y: window.innerHeight }
+                : { y: 0 }
+            }
+            transition={{ duration: 0.4 }}
+            className="contact-page"
+          >
+            {modal ? (
+              <motion.div
+                className="backdrop"
+                onClick={() => toggleModal(false)}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.6 }}
+              />
+            ) : null}
+            <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
+              {success ? (
+                <h3 className="contact-form-header outline">
+                  MESSAGE SENT  
+                  <span id="wave-emoji" role="img" aria-label="Thumbs up emoji">
+                    👍
+                  </span>
+                </h3>
+              ) : (
+                <h3 className="contact-form-header outline">
+                  {greeting}{" "}
+                  <span id="wave-emoji" role="img" aria-label="Email emoji">
+                    ✉️
+                  </span>
+                </h3>
+              )}
+              {/* <div className="error-section">
               {errors.comment && "You forgot your message!"}
               <br />
               {errors.name && errors.name.message}
               <br />
               {errors.email && errors.email.message}
             </div> */}
-            <textarea
-              name="message"
-              className="contact-form-content"
-              ref={register({
-                required: true,
-                validate: value => value !== "type your message here...",
-              })}
-              wrap="hard"
-              rows={5}
-              cols={5}
-              placeholder={placeholder}
-              // onFocus={e => (e.target.placeholder = "")}
-              // onBlur={e => (e.target.placeholder = "type your message here...")}
-              value={value}
-              onChange={e => setValue(e.target.value)}
-            />
-            <button
-              className="btn"
-              id="send"
-              onClick={
-                value !== ""
-                  ? () => toggleModal(!modal)
-                  : placeholderIndex <= placeholderArray.length - 1
-                  ? () => setPlaceholderIndex(placeholderIndex + 1)
-                  : setPlaceholderIndex(0)
-              }
-            >
-              send
-            </button>
-            {modal ? (
-              <motion.div
-                className="modal"
-                initial={{ y: "100%", x: "-50%" }}
-                animate={{ y: "-50%", x: "-50%" }}
+              <textarea
+                name="message"
+                className="contact-form-content"
+                ref={register({
+                  required: true,
+                  validate: value => value !== "type your message here...",
+                })}
+                wrap="hard"
+                rows={5}
+                cols={5}
+                placeholder={placeholder}
+                // onFocus={e => (e.target.placeholder = "")}
+                // onBlur={e => (e.target.placeholder = "type your message here...")}
+                defaultValue={value}
+                onChange={e => setValue(e.target.value)}
+              />
+              <button
+                className="btn"
+                id="send"
+                onClick={
+                  value !== ""
+                    ? () => toggleModal(!modal)
+                    : placeholderIndex <= placeholderArray.length - 1
+                    ? () => setPlaceholderIndex(placeholderIndex + 1)
+                    : setPlaceholderIndex(0)
+                }
               >
-                <h3 className="my-name-is outline">name:</h3>
-                <input
-                  // size={15}
-                  className="name-field"
-                  ref={register({
-                    required: true,
-                  })}
-                  type="text"
-                  name="name"
-                />
-                <h3 className="my-email-is outline">email:</h3>
-                <input
-                  className="email-field"
-                  ref={register({
-                    required: true,
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "Invalid email address.",
-                    },
-                  })}
-                  type="text"
-                  name="email"
-                />
-                <input
-                  className="btn"
-                  id="send-confirm"
-                  type="submit"
-                  value="confirm"
-                />
-                {errors.email && errors.email.message ? (
-                  <div className="errors-section">{errors.email.message}</div>
-                ) : null}
-              </motion.div>
-            ) : null}
-          </form>
-        </motion.div>
-      )}
-    </Layout>
+                send
+              </button>
+              {modal ? (
+                <motion.div
+                  className="modal"
+                  initial={{ y: "100%", x: "-50%" }}
+                  animate={{ y: "-50%", x: "-50%" }}
+                >
+                  <h3 className="my-name-is outline">name:</h3>
+                  <input
+                    // size={15}
+                    className="name-field"
+                    ref={register({
+                      required: true,
+                    })}
+                    type="text"
+                    name="name"
+                  />
+                  <h3 className="my-email-is outline">email:</h3>
+                  <input
+                    className="email-field"
+                    ref={register({
+                      required: true,
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: "Invalid email address.",
+                      },
+                    })}
+                    type="text"
+                    name="email"
+                    style={
+                      errors.email
+                        ? { border: "1px ridge red" }
+                        : { border: "0.5px ridge rgba(240, 245, 243, 0.1)" }
+                    }
+                  />
+                  <input
+                    className="btn"
+                    id="send-confirm"
+                    type="submit"
+                    value="confirm"
+                  />
+                  {errors.email && errors.email.message ? (
+                    <span className="error-section">
+                      {errors.email.message}
+                    </span>
+                  ) : null}
+                </motion.div>
+              ) : null}
+            </form>
+          </motion.div>
+        )}
+      </Layout>
+    </Div100vh>
   )
 }
 

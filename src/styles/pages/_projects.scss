@@ -1,5 +1,6 @@
 @import "../helpers/variables";
 @import "../components/video";
+@import "../breakpoints/breakpoints";
 
 .project-menu {
   height: 100%;
@@ -15,11 +16,17 @@
 }
 .chevron-left {
   grid-row: 2;
-  width: 100%;
+  width: 70%;
   display: flex;
   justify-content: center;
   cursor: pointer;
   transition: opacity 0.3s ease;
+  @include media(">=xl-desktop") {
+    width: 60%;
+  }
+  @include media("<=phone") {
+    width: 100%;
+  }
 }
 .chevron-left-disabled {
   @extend .chevron-left;
@@ -59,11 +66,17 @@
 // }
 .chevron-right {
   grid-row: 2;
-  width: 100%;
+  width: 70%;
   display: flex;
   justify-content: center;
   cursor: pointer;
   transition: opacity 0.3s ease;
+  @include media(">=xl-desktop") {
+    width: 60%;
+  }
+  @include media("<=phone") {
+    width: 100%;
+  }
 }
 .chevron-right-disabled {
   @extend .chevron-right;

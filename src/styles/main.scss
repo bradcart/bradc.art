@@ -78,15 +78,17 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   // font: 112.5%/1.45em Helvetica, sans-serif;
+  height: 100%;
   box-sizing: border-box;
   overflow: hidden;
   background-color: $deep-black;
-  @include media("<=phone") {
-    overflow-y: auto;
-  }
+  // @include media("<=phone") {
+  //   overflow-y: auto;
+  // }
   // cursor: none;
 }
 body {
+  height: 100%;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -99,11 +101,14 @@ body {
   font-feature-settings: "kern", "liga", "clig", "calt";
   overflow: hidden;
   background-color: $deep-black;
-  @include media("<=phone") {
-    overflow-y: auto;
-  }
+  // @include media("<=phone") {
+  //   overflow-y: auto;
+  // }
   // cursor: none;
 }
+// .app {
+//   height: 100%;
+// }
 a {
   color: $ice-white;
   background-color: transparent;

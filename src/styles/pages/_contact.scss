@@ -51,12 +51,6 @@
   opacity: 0.9;
 }
 
-.error-section {
-  grid-row: 1;
-  grid-column: 3;
-  color: "red";
-}
-
 %content-font {
   font: {
     family: eurostile-extended, sans-serif;
@@ -137,12 +131,13 @@
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 2fr;
-  grid-auto-rows: 1fr;
+  grid-auto-rows: 0.5fr;
+  row-gap: 2.5%;
   grid-auto-flow: row;
   place-items: center;
   background-color: $deep-black;
   border: 2.5px outset $ice-white;
-  padding: 2%;
+  padding: 1.5% 2%;
 }
 .my-name-is {
   @extend %content-font;
@@ -194,11 +189,13 @@ input[type="text"] {
     border: 1px ridge $ice-white-disabled;
   }
 }
-.errors-section {
+.error-section {
   grid-row: 4;
   grid-column: 1 / span 2;
-  width: 100%;
-  color: $ice-white;
+  // width: 100%;
+  color: red;
+  text-align: center;
+  align-self: end;
 }
 #send {
   font-size: calc(1rem + 0.5vw);
