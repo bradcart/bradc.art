@@ -32,23 +32,24 @@ const Navbar = ({ page }) => {
                   {typeof window !== `undefined` && (
                     <TransitionLink
                       to="/"
+                      state={{ loadIntro: false }}
                       entry={
                         page === "contact"
                           ? {
                               delay: 0.4,
                               length: 0.4,
-                              state: { y: window.innerHeight },
+                              state: { y: window.innerHeight, fromPage: true },
                             }
                           : page === "about"
                           ? {
                               delay: 0.4,
                               length: 0.4,
-                              state: { x: window.innerWidth },
+                              state: { x: window.innerWidth, fromPage: true },
                             }
                           : {
                               delay: 0.4,
                               length: 0.4,
-                              state: { x: -window.innerWidth },
+                              state: { x: -window.innerWidth, fromPage: true },
                             }
                       }
                       exit={{ length: 0.4 }}

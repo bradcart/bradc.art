@@ -13,26 +13,26 @@ import Img from "gatsby-image/withIEPolyfill"
  * - `useStaticQuery`: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-const Image = ({ src }) => {
+const Image = ({ src, imageClass }) => {
   const data = useStaticQuery(graphql`
     query {
       gradient1: file(relativePath: { eq: "plastic1-tiny.jpg" }) {
         childImageSharp {
-          fluid(fit: COVER, maxWidth: 1440, quality: 80) {
+          fluid(maxWidth: 1440, quality: 85) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       gradient2: file(relativePath: { eq: "plastic2-tiny.jpg" }) {
         childImageSharp {
-          fluid(fit: COVER, maxWidth: 1440, quality: 80) {
+          fluid(maxWidth: 1440, quality: 85) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       gradient3: file(relativePath: { eq: "plastic3-tiny.jpg" }) {
         childImageSharp {
-          fluid(fit: COVER, maxWidth: 1440, quality: 80) {
+          fluid(maxWidth: 1440, quality: 85) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -47,6 +47,25 @@ const Image = ({ src }) => {
     }
   `)
 
+  const styling = {
+    // position: "absolute",
+    // top: 0,
+    // left: 0,
+    width: "100vw",
+    height: "100vh",
+    // mixBlendMode: "hue",
+    // pointerEvents: "none",
+    // zIndex: 2,
+    // transition: "filter 0.8s ease-out",
+  }
+
+  // const imageStyling = h => {
+  //   return {
+  //     filter: `hue-rotate(${h}deg)`,
+  //     // transition: "filter 0.8s ease-out",
+  //   }
+  // }
+
   return (
     <>
       {src === 1 ? (
@@ -54,21 +73,36 @@ const Image = ({ src }) => {
           fluid={data.gradient1.childImageSharp.fluid}
           loading="eager"
           alt="Projects gradient text"
-          style={{ height: "100%", mixBlendMode: "hue" }}
+          fadeIn={false}
+          // objectFit="cover"
+          // placeholderStyle={{ mixBlendMode: "hue" }}
+          // style={{ height: "100vh", width: "100vw" }}
+          // className="oi-1"
+          style={styling}
+          // imgStyle={{filter: "hue-rotate(0deg)"}}
         />
       ) : src === 2 ? (
         <Img
           fluid={data.gradient2.childImageSharp.fluid}
           loading="eager"
+          // fadeIn={false}
+          // placeholderClassName={imageClass}
           alt="About Me gradient text"
-          style={{ height: "100%", mixBlendMode: "hue" }}
+          // style={{ height: "100vh", width: "100vw" }}
+          // className="oi-2"
+          style={styling}
+          // imgStyle={{filter: "hue-rotate(120deg)"}}
         />
       ) : src === 3 ? (
         <Img
           fluid={data.gradient3.childImageSharp.fluid}
           loading="eager"
+          // fadeIn={false}
+          // placeholderClassName={imageClass}
           alt="Contact gradient text"
-          style={{ height: "100%", mixBlendMode: "hue" }}
+          // className="oi-3"
+          style={styling}
+          // imgStyle={{filter: "hue-rotate(240deg)"}}
         />
       ) : src === 8 ? (
         <Img

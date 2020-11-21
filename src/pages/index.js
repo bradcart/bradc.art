@@ -1,14 +1,16 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 // import { useCountUp } from "react-countup"
 import { motion } from "framer-motion"
 import TransitionLink, { TransitionState } from "gatsby-plugin-transition-link"
 // import ProjectsTransition from "../images/Projects-Screen-Invert.jpg"
 // import KeyboardEventHandler from "react-keyboard-event-handler"
 // import classNames from "classnames"
+import Intro from "../components/intro"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 import useDeviceDetect from "../utils/useDeviceDetect"
+// import useBrowserDetect from "../utils/useBrowserDetect"
 // import Text from "../components/text"
 // import NavHelper from "../images/nav-helper.svg"
 // import { Noise } from "@react-three/postprocessing"
@@ -16,36 +18,32 @@ import useDeviceDetect from "../utils/useDeviceDetect"
 // import GradientOne from "../images/plastic1-tiny.jpg"
 // import NoiseCanvas from "../components/noise-canvas"
 
-const MainMenuOverlay = ({ arrowPosition }) => (
-  <motion.div
-    key="overlay"
-    className="overlay-img"
-    initial={false}
-    animate={{
-      filter:
-        arrowPosition === 1
-          ? "hue-rotate(0deg)"
-          : arrowPosition === 2
-          ? "hue-rotate(120deg)"
-          : "hue-rotate(240deg)",
-    }}
-    transition={{ duration: 0.8 }}
-  >
-    {arrowPosition === 1 ? (
-      <Image src={1} />
-    ) : arrowPosition === 2 ? (
-      <Image src={2} />
-    ) : arrowPosition === 3 ? (
-      <Image src={3} />
-    ) : null}
-  </motion.div>
-)
+// const MainMenuOverlay = ({ arrowPosition }) => (
+//   <div
+//     className="overlay-img"
+//     style={
+//       arrowPosition === 1
+//         ? { filter: "hue-rotate(0deg)" }
+//         : arrowPosition === 2
+//         ? { filter: "hue-rotate(120deg)" }
+//         : { filter: "hue-rotate(240deg)" }
+//     }
+//   >
+//     {arrowPosition === 1 ? (
+//       <Image src={1} />
+//     ) : arrowPosition === 2 ? (
+//       <Image src={2} />
+//     ) : arrowPosition === 3 ? (
+//       <Image src={3} />
+//     ) : null}
+//   </div>
+// )
 
 const MainMenuUpperLeft = ({ arrowPosition }) => {
   const title1 = "frontend"
   const title2 = "developer"
   const sentence = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
       transition: {
@@ -70,32 +68,28 @@ const MainMenuUpperLeft = ({ arrowPosition }) => {
             initial="hidden"
             animate="visible"
           >
-            <span className="title-container">
-              {title1.split("").map((char, index) => {
-                return (
-                  <motion.span
-                    key={char + "-" + index}
-                    variants={letter}
-                    className="gradient-text-light"
-                  >
-                    {char}
-                  </motion.span>
-                )
-              })}
-            </span>{" "}
-            <span className="title-container">
-              {title2.split("").map((char, index) => {
-                return (
-                  <motion.span
-                    key={char + "-" + index}
-                    variants={letter}
-                    className="gradient-text-light"
-                  >
-                    {char}
-                  </motion.span>
-                )
-              })}
-            </span>
+            {title1.split("").map((char, index) => {
+              return (
+                <motion.span
+                  key={char + "-" + index}
+                  variants={letter}
+                  className="gradient-text-light"
+                >
+                  {char}
+                </motion.span>
+              )
+            })}{" "}
+            {title2.split("").map((char, index) => {
+              return (
+                <motion.span
+                  key={char + "-" + index}
+                  variants={letter}
+                  className="gradient-text-light"
+                >
+                  {char}
+                </motion.span>
+              )
+            })}
           </motion.span>
           <br /> based in austin, tx.
         </h1>
@@ -120,7 +114,7 @@ const MainMenuRight = ({ arrowPosition }) => (
   </div>
 )
 
-const IndexPage = () => {
+const IndexPage = ({ location }) => {
   const [arrowPosition, changeArrowPosition] = useState(1)
   // const [contentLoaded, toggleContentLoaded] = useState(false)
 
@@ -136,114 +130,168 @@ const IndexPage = () => {
   // })
 
   const { isMobile } = useDeviceDetect()
+  // const { state = {} } = location
+  // const { loadIntro } = state
+  // const [entryLength, logEntryLength] = useState(null)
+  // const [rendered, setRendered] = useState(false)
+
+  // useEffect(() => {
+  //   window.sessionStorage.setItem("loaded", true)
+  //   })
+  // }, [])
+
+  // const windowAlert = () => {
+  //   typeof window !== `undefined` &&
+  //     window.alert(
+  //       "This website is currently optimized for Google Chrome! Please use it for the best experience."
+  //     )
+  // }
+
+  // useEffect(() => {
+  //   windowAlert()
+  // }, [])
 
   return (
-    <TransitionState>
-      {({ mount, transitionStatus, entry, exit }) => (
-        <Layout page="index">
-          <SEO title="portfolio" />
-          {!isMobile ? <MainMenuOverlay arrowPosition={arrowPosition} /> : null}
-          <motion.div
-            className="main-menu"
-            key="main-wrapper"
-            initial={entry.state}
-            animate={
-              transitionStatus === "exiting"
-                ? exit.state
-                : { opacity: 1, x: 0, y: 0 }
-            }
-            transition={
-              transitionStatus === "exiting"
-                ? { duration: exit.length }
-                : { duration: 0.4 }
-            }
-          >
-            <div className="main-menu-left">
-              <MainMenuUpperLeft arrowPosition={arrowPosition} />
-              {typeof window !== `undefined` && (
-                <div className="main-menu-lower-left">
-                  <motion.h3
-                    layout
-                    transition={{ type: "spring", bounce: 0 }}
-                    className="mmo-selector"
-                    id={`position-${arrowPosition}`}
-                  >
-                    &#62;&#62;
-                  </motion.h3>
-                  <TransitionLink
-                    id="projects-link"
-                    to="projects"
-                    exit={{
-                      length: 0.4,
-                      state: { x: -window.innerWidth, opacity: 0 },
-                    }}
-                    entry={{
-                      delay: 0.4,
-                      state: { x: window.innerWidth },
-                    }}
-                  >
-                    <motion.h3
-                      onMouseOver={() => changeArrowPosition(1)}
-                      onTapStart={() => changeArrowPosition(1)}
-                      className={
-                        arrowPosition === 1 ? "active-link" : "outline"
-                      }
-                    >
-                      Projects
-                    </motion.h3>
-                  </TransitionLink>
-                  <TransitionLink
-                    id="about-me-link"
-                    to="about"
-                    exit={{
-                      length: 0.4,
-                      state: { x: window.innerWidth, opacity: 0 },
-                    }}
-                    entry={{
-                      delay: 0.4,
-                      state: { x: -window.innerWidth },
-                    }}
-                  >
-                    <motion.h3
-                      onMouseOver={() => changeArrowPosition(2)}
-                      onTapStart={() => changeArrowPosition(2)}
-                      className={
-                        arrowPosition === 2 ? "active-link" : "outline"
-                      }
-                    >
-                      About me
-                    </motion.h3>
-                  </TransitionLink>
-                  <TransitionLink
-                    id="contact-link"
-                    to="contact"
-                    exit={{
-                      length: 0.4,
-                      state: { y: -window.innerHeight, opacity: 0 },
-                    }}
-                    entry={{
-                      delay: 0.4,
-                      state: { y: window.innerHeight },
-                    }}
-                  >
-                    <motion.h3
-                      onMouseOver={() => changeArrowPosition(3)}
-                      onTapStart={() => changeArrowPosition(3)}
-                      className={
-                        arrowPosition === 3 ? "active-link" : "outline"
-                      }
-                    >
-                      Contact
-                    </motion.h3>
-                  </TransitionLink>
-                </div>
-              )}
-            </div>
-            <MainMenuRight arrowPosition={arrowPosition} />
-          </motion.div>
-        </Layout>
-      )}
-    </TransitionState>
+    <>
+      {!location.action ? <Intro /> : null}
+      <TransitionState>
+        {({ mount, transitionStatus, entry, exit }) => (
+          <>
+            {/* {console.log(location)} */}
+            {/* <motion.div
+              initial={{ y: window.innerHeight }}
+              animate={{ y: 0 }}
+              transition={{ duration: 3.5, delay: 4 }}
+            > */}
+              <Layout page="index">
+                {console.log(window.navigator.userAgent)}
+                {/* {window !== `undefined` && console.log(window.navigator)} */}
+                <SEO title="portfolio" />
+                <motion.div
+                  key="overlay"
+                  className="overlay-img"
+                  initial={false}
+                  animate={{
+                    filter:
+                      arrowPosition === 1
+                        ? "hue-rotate(0deg)"
+                        : arrowPosition === 2
+                        ? "hue-rotate(120deg)"
+                        : "hue-rotate(240deg)",
+                  }}
+                  transition={{ duration: 0.8 }}
+                >
+                  {arrowPosition === 1 ? (
+                    <Image src={1} />
+                  ) : arrowPosition === 2 ? (
+                    <Image src={2} />
+                  ) : arrowPosition === 3 ? (
+                    <Image src={3} />
+                  ) : null}
+                </motion.div>
+                <motion.div
+                  className="main-menu"
+                  key="main-wrapper"
+                  initial={
+                    !location.action ? { y: window.innerHeight } : entry.state
+                  }
+                  animate={
+                    transitionStatus === "exiting"
+                      ? exit.state
+                      : { opacity: 1, x: 0, y: 0 }
+                  }
+                  transition={
+                    transitionStatus === "exiting"
+                      ? { duration: exit.length }
+                      : { duration: 0.4 }
+                  }
+                >
+                  <div className="main-menu-left">
+                    <MainMenuUpperLeft arrowPosition={arrowPosition} />
+                    {typeof window !== `undefined` && (
+                      <div className="main-menu-lower-left">
+                        <motion.h3
+                          layout
+                          transition={{ type: "spring", bounce: 0 }}
+                          className="mmo-selector"
+                          id={`position-${arrowPosition}`}
+                        >
+                          &#62;&#62;
+                        </motion.h3>
+                        <TransitionLink
+                          id="projects-link"
+                          to="projects"
+                          exit={{
+                            length: 0.4,
+                            state: { x: -window.innerWidth, opacity: 0 },
+                          }}
+                          entry={{
+                            delay: 0.4,
+                            state: { x: window.innerWidth },
+                          }}
+                        >
+                          <h3
+                            onMouseOver={() => changeArrowPosition(1)}
+                            className={
+                              arrowPosition === 1 ? "active-link" : "outline"
+                            }
+                          >
+                            Projects
+                          </h3>
+                        </TransitionLink>
+                        <TransitionLink
+                          id="about-me-link"
+                          to="about"
+                          exit={{
+                            length: 0.4,
+                            state: { x: window.innerWidth, opacity: 0 },
+                          }}
+                          entry={{
+                            delay: 0.4,
+                            state: { x: -window.innerWidth },
+                          }}
+                        >
+                          <h3
+                            onMouseOver={() => changeArrowPosition(2)}
+                            className={
+                              arrowPosition === 2 ? "active-link" : "outline"
+                            }
+                          >
+                            About me
+                          </h3>
+                        </TransitionLink>
+                        <TransitionLink
+                          id="contact-link"
+                          to="contact"
+                          exit={{
+                            length: 0.4,
+                            state: { y: -window.innerHeight, opacity: 0 },
+                          }}
+                          entry={{
+                            delay: 0.4,
+                            state: { y: window.innerHeight },
+                          }}
+                        >
+                          <h3
+                            onMouseOver={() => changeArrowPosition(3)}
+                            className={
+                              arrowPosition === 3 ? "active-link" : "outline"
+                            }
+                          >
+                            Contact
+                          </h3>
+                        </TransitionLink>
+                      </div>
+                    )}
+                  </div>
+                  <MainMenuRight arrowPosition={arrowPosition} />
+                </motion.div>
+              </Layout>
+            {/* </motion.div> */}
+          </>
+        )}
+      </TransitionState>
+    </>
   )
 }
 

@@ -2,40 +2,63 @@
 @import "breakpoints/breakpoints";
 
 .overlay-img {
+  // contain: content;
+  // display: contents;
   position: absolute;
+  z-index: 2;
   // top: 0;
   // left: 0;
-  z-index: 1;
   width: 100%;
   height: 100%;
+  // transform: translate3d(0, 0, 0);
+  // -webkit-transform: translate3d(0, 0, 0);
+  // perspective: 1000px;
+  // -webkit-perspective: 1000px;
+  // transform-style: preserve-3d;
+  // -webkit-transform-style: preserve-3d;
+  // top: 0;
+  // left: 0;
+  // z-index: auto;
+  // width: 100%;
+  // height: 90%;
   mix-blend-mode: hue;
   pointer-events: none;
-  overflow: hidden;
+  // overflow: hidden;
   @include media("<=phone") {
     height: 50%;
   }
 }
 
-%mobile-gradient {
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+#oi-1 {
+  filter: hue-rotate(0deg);
+  // position: absolute;
+  // transform-style: preserve-3d;
+  // -webkit-transform-style: preserve-3d;
 }
-
-.mobile-gradient-1 {
-  @extend %mobile-gradient;
-  background: linear-gradient(90deg, #fdbb2d 0%, #3a1c71 100%);
+#oi-2 {
+  filter: hue-rotate(120deg);
+  // transform-style: preserve-3d;
+  // -webkit-transform-style: preserve-3d;
 }
-
-.mobile-gradient-2 {
-  @extend %mobile-gradient;
-}
-
-.mobile-gradient-3 {
-  @extend %mobile-gradient;
+#oi-3 {
+  filter: hue-rotate(240deg);
+  // transform-style: preserve-3d;
+  // -webkit-transform-style: preserve-3d;
 }
 
 .main-menu {
+  // position: fixed;
+  // z-index: 1;
+  // contain: paint;
+  // will-change: opacity;
+  // transform: translate3d(0, 0, 200px);
+  // transform-style: preserve-3d;
+  // -webkit-transform-style: preserve-3d;
+  // perspective: 1000px;
+  // -webkit-perspective: 1000px;
+  background-color: $deep-black;
+  // transform: translateZ(0);
+  // isolation: isolate;
   height: 95%;
   width: 95%;
   padding: 2.5%;
@@ -50,8 +73,6 @@
   // justify-content: center;
   // align-content: center;
   align-items: center;
-  @include media("<=phone") {
-  }
 }
 .main-menu-left {
   justify-self: end;
@@ -75,6 +96,8 @@
   }
 }
 .main-menu-upper-left {
+  // position: relative;
+  // z-index: auto;
   grid-column: 1;
   grid-row: 1;
   align-self: start;
@@ -99,6 +122,10 @@
   display: inline-block;
   white-space: nowrap;
   color: $gradient-text-light;
+  // transform: translate3d(0, 0, 0);
+  // -webkit-transform: translate3d(0, 0, 0);
+  // transform-style: preserve-3d;
+  // -webkit-transform-style: preserve-3d;
 }
 .main-menu-lower-left {
   grid-row: 2;

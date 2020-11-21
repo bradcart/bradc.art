@@ -14,8 +14,8 @@ const ContactPage = ({ transitionStatus, entry }) => {
   const placeholderArray = [
     "type your message here...",
     "type your message HERE please.",
-    "TYPE A MESSAGE.",
-    "ANY MESSAGE.",
+    "type anything.",
+    "literally anything.",
     "have you used a keyboard before?",
     "Escribe tu mensaje aquí",
     "ここにメッセージを入力してください",
