@@ -33,9 +33,7 @@ const Intro = () => {
           ))}
         </div>
         {timer ? <div className="intro-counter">{countUp}</div> : null}
-        {/* <div className="left-wipe" /> */}
       </div>
-      {/* <div className="right-wipe" /> */}
     </>
   )
 }
