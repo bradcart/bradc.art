@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { useForm } from "react-hook-form"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -29,6 +29,8 @@ const ContactPage = ({ transitionStatus, entry }) => {
   const [value, setValue] = useState("")
   const [modal, toggleModal] = useState(false)
   const [success, toggleSuccess] = useState(false)
+  const [error, toggleError] = useState(false)
+  const [clicked, toggleClicked] = useState(false)
 
   const endpoints = {
     contact: "/.netlify/functions/sendEmail",
@@ -60,85 +62,100 @@ const ContactPage = ({ transitionStatus, entry }) => {
   }
 
   return (
-    <Div100vh>
-      <Layout page="contact">
-        <SEO title="contact" />
-        {typeof window !== `undefined` && (
-          <motion.div
-            initial={entry.state}
-            animate={
-              transitionStatus === "exiting"
-                ? { y: window.innerHeight }
-                : { y: 0 }
-            }
-            transition={{ duration: 0.4 }}
-            className="contact-page"
-          >
-            {modal ? (
-              <motion.div
-                className="backdrop"
-                onClick={() => toggleModal(false)}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.6 }}
-              />
-            ) : null}
-            <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
-              {success ? (
-                <h3 className="contact-form-header outline">
-                  MESSAGE SENT  
-                  <span id="wave-emoji" role="img" aria-label="Thumbs up emoji">
-                    👍
-                  </span>
-                </h3>
-              ) : (
-                <h3 className="contact-form-header outline">
-                  {greeting}{" "}
-                  <span id="wave-emoji" role="img" aria-label="Email emoji">
-                    ✉️
-                  </span>
-                </h3>
-              )}
-              {/* <div className="error-section">
+    <Layout page="contact">
+      <SEO title="contact" />
+      {typeof window !== `undefined` && (
+        <motion.div
+          initial={entry.state}
+          animate={
+            transitionStatus === "exiting"
+              ? { y: window.innerHeight }
+              : { y: 0 }
+          }
+          transition={{ duration: 0.4 }}
+          className="contact-page"
+        >
+          {modal ? (
+            <motion.div
+              className="backdrop"
+              onClick={() => toggleModal(false)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.6 }}
+            />
+          ) : null}
+          <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
+            {success ? (
+              <h3 className="contact-form-header outline">
+                MESSAGE SENT
+                <span id="wave-emoji" role="img" aria-label="Thumbs up emoji">
+                  👍
+                </span>
+              </h3>
+            ) : error ? (
+              <h3 className="contact-form-header outline">
+                ERROR. REFRESH + TRY AGAIN
+                <span id="wave-emoji" role="img" aria-label="Thumbs up emoji">
+                  👎
+                </span>
+              </h3>
+            ) : (
+              <h3 className="contact-form-header outline">
+                {greeting}{" "}
+                <span id="wave-emoji" role="img" aria-label="Email emoji">
+                  ✉️
+                </span>
+              </h3>
+            )}
+            {/* <div className="error-section">
               {errors.comment && "You forgot your message!"}
               <br />
               {errors.name && errors.name.message}
               <br />
               {errors.email && errors.email.message}
             </div> */}
-              <textarea
-                name="message"
-                className="contact-form-content"
-                ref={register({
-                  required: true,
-                  validate: value => value !== "type your message here...",
-                })}
-                wrap="hard"
-                rows={5}
-                cols={5}
-                placeholder={placeholder}
-                // onFocus={e => (e.target.placeholder = "")}
-                // onBlur={e => (e.target.placeholder = "type your message here...")}
-                defaultValue={value}
-                onChange={e => setValue(e.target.value)}
-              />
-              <button
-                className="btn"
-                id="send"
-                onClick={
-                  value !== ""
-                    ? () => toggleModal(!modal)
-                    : placeholderIndex <= placeholderArray.length - 1
-                    ? () => setPlaceholderIndex(placeholderIndex + 1)
-                    : setPlaceholderIndex(0)
-                }
-              >
-                send
-              </button>
+            <textarea
+              name="message"
+              className="contact-form-content"
+              ref={register({
+                required: true,
+                validate: value => value !== "type your message here...",
+              })}
+              wrap="hard"
+              rows={5}
+              cols={5}
+              placeholder={placeholder}
+              // onFocus={e => (e.target.placeholder = "")}
+              // onBlur={e => (e.target.placeholder = "type your message here...")}
+              defaultValue={value}
+              onChange={e => setValue(e.target.value)}
+              style={
+                success
+                  ? { border: "1px ridge green" }
+                  : error
+                  ? { border: "1px ridge red" }
+                  : { border: "0.5px ridge rgba(240, 245, 243, 0.1)" }
+              }
+            />
+            <button
+              className="btn"
+              id="send"
+              onClick={
+                value !== ""
+                  ? () => toggleModal(!modal)
+                  : placeholderIndex <= placeholderArray.length - 1
+                  ? () => setPlaceholderIndex(placeholderIndex + 1)
+                  : setPlaceholderIndex(0)
+              }
+            >
+              send
+            </button>
+            <AnimatePresence>
               {modal ? (
                 <motion.div
                   className="modal"
                   initial={{ y: "100%", x: "-50%" }}
                   animate={{ y: "-50%", x: "-50%" }}
+                  exit={{ y: "55vh", x: "-50%" }}
                 >
                   <h3 className="my-name-is outline">name:</h3>
                   <input
@@ -163,7 +180,7 @@ const ContactPage = ({ transitionStatus, entry }) => {
                     type="text"
                     name="email"
                     style={
-                      errors.email
+                      errors.email && clicked
                         ? { border: "1px ridge red" }
                         : { border: "0.5px ridge rgba(240, 245, 243, 0.1)" }
                     }
@@ -173,19 +190,20 @@ const ContactPage = ({ transitionStatus, entry }) => {
                     id="send-confirm"
                     type="submit"
                     value="confirm"
+                    onClick={() => toggleClicked(true)}
                   />
-                  {errors.email && errors.email.message ? (
+                  {errors.email && errors.email.message && clicked ? (
                     <span className="error-section">
                       {errors.email.message}
                     </span>
                   ) : null}
                 </motion.div>
               ) : null}
-            </form>
-          </motion.div>
-        )}
-      </Layout>
-    </Div100vh>
+            </AnimatePresence>
+          </form>
+        </motion.div>
+      )}
+    </Layout>
   )
 }
 

@@ -5,8 +5,9 @@ import VideoCanvas from "../components/video-canvas"
 import Panel from "../components/panel"
 import ChevronBigLeft from "../assets/chevron_big_left.svg"
 import ChevronBigRight from "../assets/chevron_big_right.svg"
-import Div100vh from "react-div-100vh"
 import { motion } from "framer-motion"
+import ReactoryTitle from "../assets/ReactoryTitle.svg"
+import ReactIcon from "../assets/react_icon.svg"
 
 const ProjectsPage = ({ transitionStatus, entry }) => {
   // const [selectedPage, changeSelectedPage] = useState("web")
@@ -38,6 +39,20 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
     }
   }
 
+  const ProjectInfo = () => {
+    return (
+      <div className="project-info">
+        <span className="project-info-subtitle">
+          {panel === 1
+            ? "drag-and-drop website builder"
+            : panel === 2
+            ? "portfolio tracker"
+            : "online chatrooms"}
+        </span>
+      </div>
+    )
+  }
+
   // const controls = useAnimation()
   // const variants = {
   //   enter: {
@@ -52,43 +67,40 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
   // }
 
   return (
-    <Div100vh>
-      <Layout page="projects">
-        {/* <div className={`overlay-4`} /> */}
-        <SEO title="projects" />
-        {typeof window !== `undefined` && (
+    <Layout page="projects">
+      {/* <div className={`overlay-4`} /> */}
+      <SEO title="projects" />
+      {typeof window !== `undefined` && (
+        <motion.div
+          className="project-menu"
+          initial={entry.state}
+          animate={
+            transitionStatus === "exiting" ? { x: window.innerWidth } : { x: 0 }
+          }
+          transition={{ duration: 0.4 }}
+        >
           <motion.div
-            className="project-menu"
-            initial={entry.state}
-            animate={
-              transitionStatus === "exiting"
-                ? { x: window.innerWidth }
-                : { x: 0 }
-            }
-            transition={{ duration: 0.4 }}
+            className={panel > 1 ? "chevron-left" : "chevron-left-disabled"}
+            onClick={() => prevPanel()}
+            whileTap={panel > 1 ? { scale: 0.9 } : { scale: 1 }}
+            whileHover={panel > 1 ? { scale: 1.2 } : { scale: 1 }}
           >
-            <motion.div
-              className={panel > 1 ? "chevron-left" : "chevron-left-disabled"}
-              onClick={() => prevPanel()}
-              whileTap={panel > 1 ? { scale: 0.9 } : { scale: 1 }}
-              whileHover={panel > 1 ? { scale: 1.2 } : { scale: 1 }}
-            >
-              <ChevronBigLeft />
-            </motion.div>
-            <a
-              href={
-                panel === 1
-                  ? "https://youtu.be/VmIQeYBJmB4"
-                  : panel === 2
-                  ? "https://youtu.be/IyU55GfZfGo"
-                  : "https://www.linkedin.com/in/brad-t-carter/"
-              }
-              target="_blank"
-              rel="noreferrer"
-              className="project-link"
-            >
-              <div className="canvas-wrapper">
-                {/* <div className="canvas-subtitle">
+            <ChevronBigLeft />
+          </motion.div>
+          <a
+            href={
+              panel === 1
+                ? "https://youtu.be/VmIQeYBJmB4"
+                : panel === 2
+                ? "https://youtu.be/IyU55GfZfGo"
+                : "https://www.linkedin.com/in/brad-t-carter/"
+            }
+            target="_blank"
+            rel="noreferrer"
+            className="project-link"
+          >
+            <div className="canvas-wrapper">
+              {/* <div className="canvas-subtitle">
                 <h2 className="subtitle-text">
                   {panel === 1
                     ? "WEBSITE BUILDER"
@@ -97,23 +109,23 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
                     : "GROUP CHAT"}
                 </h2>
               </div> */}
-                <VideoCanvas>
-                  <Panel panel={panel} />
-                </VideoCanvas>
-              </div>
-            </a>
-            <motion.div
-              className={panel < 3 ? "chevron-right" : "chevron-right-disabled"}
-              onClick={() => nextPanel()}
-              whileTap={panel < 3 ? { scale: 0.9 } : { scale: 1 }}
-              whileHover={panel < 3 ? { scale: 1.2 } : { scale: 1 }}
-            >
-              <ChevronBigRight />
-            </motion.div>
+              {/* <ReactoryTitle className="canvas-title" /> */}
+              <VideoCanvas>
+                <Panel panel={panel} />
+              </VideoCanvas>
+            </div>
+          </a>
+          <motion.div
+            className={panel < 3 ? "chevron-right" : "chevron-right-disabled"}
+            onClick={() => nextPanel()}
+            whileTap={panel < 3 ? { scale: 0.9 } : { scale: 1 }}
+            whileHover={panel < 3 ? { scale: 1.2 } : { scale: 1 }}
+          >
+            <ChevronBigRight />
           </motion.div>
-        )}
-      </Layout>
-    </Div100vh>
+        </motion.div>
+      )}
+    </Layout>
   )
 }
 
