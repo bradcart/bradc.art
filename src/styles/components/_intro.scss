@@ -3,9 +3,9 @@
 .intro-container {
   // display: visible;
   // position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 8;
+  // top: 0;
+  // left: 0;
+  // z-index: 8;
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
@@ -24,18 +24,27 @@
   font-size: calc(1rem + 0.1vw);
   align-self: flex-end;
   padding-bottom: 5vh;
-  mix-blend-mode: exclusion;
+  mix-blend-mode: difference;
   color: #f0f5f3;
 }
 
 .intro-text-wrapper {
   color: #f0f5f3;
   position: absolute;
-  z-index: 9;
+  // z-index: 9;
 }
 
 .intro-text {
   font-size: calc(2rem + 1.6vw);
+}
+
+.intro-safari-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.intro-safari-text {
+  font-size: calc(1rem + 1.25vw);
 }
 
 .text-2,
@@ -151,14 +160,17 @@
 @keyframes slide-out-container {
   0% {
     height: 100vh;
+    opacity: 1;
   }
 
   40% {
     height: 100vh;
+    opacity: 1;
   }
 
   100% {
     height: 0;
+    opacity: 0;
   }
 }
 

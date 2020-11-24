@@ -38,7 +38,6 @@
     clip: text;
     color: $ice-white;
   }
-  cursor: default;
   @include media(">=tablet", "<=desktop") {
     font-size: calc(1.25rem + 2vw);
   }
@@ -112,7 +111,7 @@
 .backdrop {
   overflow: hidden;
   position: absolute;
-  z-index: 2;
+  // z-index: 1;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -121,10 +120,10 @@
   background-color: $deep-black;
   opacity: 1;
 }
-.modal {
+#modal {
   overflow: hidden;
   position: absolute;
-  z-index: 3;
+  z-index: 1;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -143,7 +142,6 @@
   @extend %content-font;
   grid-row: 1;
   grid-column: 1;
-  cursor: default;
 }
 .name-field {
   grid-row: 1;
@@ -159,7 +157,6 @@
   @extend %content-font;
   grid-row: 2;
   grid-column: 1;
-  cursor: default;
 }
 .email-field {
   grid-row: 2;

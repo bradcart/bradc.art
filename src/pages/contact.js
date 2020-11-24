@@ -3,10 +3,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { useForm } from "react-hook-form"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Div100vh from "react-div-100vh"
-import { useTimeout } from "beautiful-react-hooks"
-// import Button from "../components/button"
-// import WavingEmoji from "../assets/WavingEmoji.svg"
+import Cursor from "../components/cursor"
 
 const ContactPage = ({ transitionStatus, entry }) => {
   const greetingArray = ["HELLO", "LET'S TALK", "DON'T BE SHY", "TALK TO ME"]
@@ -53,12 +50,21 @@ const ContactPage = ({ transitionStatus, entry }) => {
   const handleSuccess = () => {
     toggleModal(false)
     toggleSuccess(true)
-    console.log("message sent!")
+    // console.log("message sent!")
   }
 
   const handleError = () => {
-    // toggleError(true)
-    console.log("error!")
+    toggleError(true)
+    // console.log("error!")
+  }
+
+  const handleMouseEnter = () => {
+    const cursor = document.getElementById("cursor")
+    cursor.classList.add("cursor--modal-hover")
+  }
+  const handleMouseLeave = () => {
+    const cursor = document.getElementById("cursor")
+    cursor.classList.remove("cursor--modal-hover")
   }
 
   return (
@@ -94,7 +100,7 @@ const ContactPage = ({ transitionStatus, entry }) => {
             ) : error ? (
               <h3 className="contact-form-header outline">
                 ERROR. REFRESH + TRY AGAIN
-                <span id="wave-emoji" role="img" aria-label="Thumbs up emoji">
+                <span id="wave-emoji" role="img" aria-label="Thumbs down emoji">
                   👎
                 </span>
               </h3>
@@ -106,16 +112,9 @@ const ContactPage = ({ transitionStatus, entry }) => {
                 </span>
               </h3>
             )}
-            {/* <div className="error-section">
-              {errors.comment && "You forgot your message!"}
-              <br />
-              {errors.name && errors.name.message}
-              <br />
-              {errors.email && errors.email.message}
-            </div> */}
             <textarea
               name="message"
-              className="contact-form-content"
+              className="contact-form-content hover-this--chat"
               ref={register({
                 required: true,
                 validate: value => value !== "type your message here...",
@@ -152,15 +151,17 @@ const ContactPage = ({ transitionStatus, entry }) => {
             <AnimatePresence>
               {modal ? (
                 <motion.div
-                  className="modal"
+                  id="modal"
                   initial={{ y: "100%", x: "-50%" }}
                   animate={{ y: "-50%", x: "-50%" }}
                   exit={{ y: "55vh", x: "-50%" }}
+                  onMouseEnter={() => handleMouseEnter()}
+                  onMouseLeave={() => handleMouseLeave()}
                 >
                   <h3 className="my-name-is outline">name:</h3>
                   <input
                     // size={15}
-                    className="name-field"
+                    className="name-field hover-this--chat"
                     ref={register({
                       required: true,
                     })}
@@ -169,7 +170,7 @@ const ContactPage = ({ transitionStatus, entry }) => {
                   />
                   <h3 className="my-email-is outline">email:</h3>
                   <input
-                    className="email-field"
+                    className="email-field hover-this--chat"
                     ref={register({
                       required: true,
                       pattern: {
@@ -200,6 +201,7 @@ const ContactPage = ({ transitionStatus, entry }) => {
                 </motion.div>
               ) : null}
             </AnimatePresence>
+            <Cursor />
           </form>
         </motion.div>
       )}

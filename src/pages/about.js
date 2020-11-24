@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Image from "../components/image"
 import Div100vh from "react-div-100vh"
+import Cursor from "../components/cursor"
 
 const AboutPage = ({ transitionStatus, entry }) => {
   const technologies = [
@@ -51,11 +52,9 @@ const AboutPage = ({ transitionStatus, entry }) => {
               <div className="about-page">
                 <div className="about-page-left">
                   <Image src={8} />
-                  {/* <img src={Brad} alt="Brad and a tree" id="about-me-img" /> */}
                 </div>
                 <div className="about-page-upper-right">
                   <h2 id="about-header">about me</h2>
-                  {/* <h4 id="about-subheader">placeholder text</h4> */}
                   <div className="about-page-right-paragraph">
                     <p>
                       Frontend developer with a degree in Audio Engineering.
@@ -81,19 +80,9 @@ const AboutPage = ({ transitionStatus, entry }) => {
                       </a>
                       .
                     </p>
-                    {/* <hr id="about-hr" /> */}
                   </div>
                 </div>
-                {/* <div className="overlay--about-2" /> */}
                 <hr className="about-page-middle-right" />
-                {/* <div className="skills-paragraph">
-            <p className="skills-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Fringilla phasellus faucibus scelerisque eleifend donec pretium
-              vulputate.
-            </p>
-          </div> */}
                 <div className="about-page-lower-right">
                   <div className="technologies-list">
                     <div className="tech-list-wrapper">
@@ -122,6 +111,7 @@ const AboutPage = ({ transitionStatus, entry }) => {
                       ))}
                     </div>
                   </div>
+                  <Cursor />
                 </div>
               </div>
             </div>

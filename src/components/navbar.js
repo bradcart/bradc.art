@@ -3,109 +3,106 @@ import { motion } from "framer-motion"
 import TransitionLink, { TransitionState } from "gatsby-plugin-transition-link"
 import ChevronDuoLeft from "../assets/chevron_duo_left.svg"
 import LinkedInIcon from "../images/linkedin_icon.svg"
-// import ProjectsScreen from "../images/Projects-Screen-Invert.jpg"
 
 const Navbar = ({ page }) => {
-  // const [highlighted, changeHighlighted] = useState("web")
-  // const exitDirection = () => {
-  //   if (page === "about") {
-  //     return -window.innerWidth
-  //   } else {
-  //     return -500
-  //   }
-  // }
+  const handleMouseEnter = () => {
+    const cursor = document.getElementById("cursor")
+    cursor.classList.add("cursor--chevron-hover")
+  }
+  const handleMouseLeave = () => {
+    const cursor = document.getElementById("cursor")
+    cursor.classList.remove("cursor--chevron-hover")
+  }
   return (
-    <>
-      <TransitionState>
-        {({ transitionStatus }) => {
-          if (page !== "index") {
-            return (
-              <div className="navbar">
-                <motion.div
-                  className="navbar-left"
-                  initial={{ x: -500 }}
-                  animate={
-                    transitionStatus === "exiting" ? { x: -500 } : { x: 0 }
-                  }
-                  transition={{ duration: 0.8 }}
-                >
-                  {typeof window !== `undefined` && (
-                    <TransitionLink
-                      to="/"
-                      state={{ loadIntro: false }}
-                      entry={
-                        page === "contact"
-                          ? {
-                              delay: 0.4,
-                              length: 0.4,
-                              state: { y: window.innerHeight, fromPage: true },
-                            }
-                          : page === "about"
-                          ? {
-                              delay: 0.4,
-                              length: 0.4,
-                              state: { x: window.innerWidth, fromPage: true },
-                            }
-                          : {
-                              delay: 0.4,
-                              length: 0.4,
-                              state: { x: -window.innerWidth, fromPage: true },
-                            }
-                      }
-                      exit={{ length: 0.4 }}
+    <TransitionState>
+      {({ transitionStatus }) => {
+        if (page !== "index") {
+          return (
+            <div className="navbar">
+              <motion.div
+                className="navbar-left"
+                initial={{ x: -500 }}
+                animate={
+                  transitionStatus === "exiting" ? { x: -500 } : { x: 0 }
+                }
+                transition={{ duration: 0.8 }}
+              >
+                {typeof window !== `undefined` && (
+                  <TransitionLink
+                    to="/"
+                    state={{ loadIntro: false }}
+                    entry={
+                      page === "contact"
+                        ? {
+                            delay: 0.4,
+                            length: 0.4,
+                            state: { y: window.innerHeight, fromPage: true },
+                          }
+                        : page === "about"
+                        ? {
+                            delay: 0.4,
+                            length: 0.4,
+                            state: { x: window.innerWidth, fromPage: true },
+                          }
+                        : {
+                            delay: 0.4,
+                            length: 0.4,
+                            state: { x: -window.innerWidth, fromPage: true },
+                          }
+                    }
+                    exit={{ length: 0.4 }}
+                  >
+                    <div
+                      className="navbar-chevron"
+                      onMouseEnter={() => handleMouseEnter()}
+                      onMouseLeave={() => handleMouseLeave()}
                     >
-                      <div className="navbar-chevron">
-                        <ChevronDuoLeft />
-                      </div>
-                    </TransitionLink>
-                  )}
-                  <div id="navbar-title">brad carter.</div>
-                </motion.div>
-                <motion.div
-                  className="navbar-right"
-                  initial={{ x: 500 }}
-                  animate={
-                    transitionStatus === "exiting" ? { x: 500 } : { x: 0 }
-                  }
-                  transition={{ duration: 1 }}
+                      <ChevronDuoLeft />
+                    </div>
+                  </TransitionLink>
+                )}
+                <div id="navbar-title">brad carter.</div>
+              </motion.div>
+              <motion.div
+                className="navbar-right"
+                initial={{ x: 500 }}
+                animate={transitionStatus === "exiting" ? { x: 500 } : { x: 0 }}
+                transition={{ duration: 1 }}
+              >
+                <a
+                  href="https://www.linkedin.com/in/brad-t-carter/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-link"
                 >
-                  <a
-                    href="https://www.linkedin.com/in/brad-t-carter/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="social-link"
-                  >
-                    <img src={LinkedInIcon} alt="LinkedIn" id="linked-in" />
-                  </a>
-                </motion.div>
-              </div>
-            )
-          } else {
-            return (
-              <div className="navbar-index">
-                <motion.div
-                  className="navbar-right"
-                  initial={{ x: 500 }}
-                  animate={
-                    transitionStatus === "exiting" ? { x: 500 } : { x: 0 }
-                  }
-                  transition={{ duration: 1 }}
+                  <img src={LinkedInIcon} alt="LinkedIn" id="linked-in" />
+                </a>
+              </motion.div>
+            </div>
+          )
+        } else {
+          return (
+            <div className="navbar-index">
+              <motion.div
+                className="navbar-right"
+                initial={{ x: 500 }}
+                animate={transitionStatus === "exiting" ? { x: 500 } : { x: 0 }}
+                transition={{ duration: 1 }}
+              >
+                <a
+                  href="https://www.linkedin.com/in/brad-t-carter/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-link"
                 >
-                  <a
-                    href="https://www.linkedin.com/in/brad-t-carter/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="social-link"
-                  >
-                    <img src={LinkedInIcon} alt="LinkedIn" id="linked-in" />
-                  </a>
-                </motion.div>
-              </div>
-            )
-          }
-        }}
-      </TransitionState>
-    </>
+                  <img src={LinkedInIcon} alt="LinkedIn" id="linked-in" />
+                </a>
+              </motion.div>
+            </div>
+          )
+        }
+      }}
+    </TransitionState>
   )
 }
 

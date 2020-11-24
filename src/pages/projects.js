@@ -6,8 +6,7 @@ import Panel from "../components/panel"
 import ChevronBigLeft from "../assets/chevron_big_left.svg"
 import ChevronBigRight from "../assets/chevron_big_right.svg"
 import { motion } from "framer-motion"
-import ReactoryTitle from "../assets/ReactoryTitle.svg"
-import ReactIcon from "../assets/react_icon.svg"
+import Cursor from "../components/cursor"
 
 const ProjectsPage = ({ transitionStatus, entry }) => {
   // const [selectedPage, changeSelectedPage] = useState("web")
@@ -39,19 +38,19 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
     }
   }
 
-  const ProjectInfo = () => {
-    return (
-      <div className="project-info">
-        <span className="project-info-subtitle">
-          {panel === 1
-            ? "drag-and-drop website builder"
-            : panel === 2
-            ? "portfolio tracker"
-            : "online chatrooms"}
-        </span>
-      </div>
-    )
-  }
+  // const ProjectInfo = () => {
+  //   return (
+  //     <div className="project-info">
+  //       <span className="project-info-subtitle">
+  //         {panel === 1
+  //           ? "drag-and-drop website builder"
+  //           : panel === 2
+  //           ? "portfolio tracker"
+  //           : "online chatrooms"}
+  //       </span>
+  //     </div>
+  //   )
+  // }
 
   // const controls = useAnimation()
   // const variants = {
@@ -100,16 +99,6 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
             className="project-link"
           >
             <div className="canvas-wrapper">
-              {/* <div className="canvas-subtitle">
-                <h2 className="subtitle-text">
-                  {panel === 1
-                    ? "WEBSITE BUILDER"
-                    : panel === 2
-                    ? "PORTFOLIO TRACKER"
-                    : "GROUP CHAT"}
-                </h2>
-              </div> */}
-              {/* <ReactoryTitle className="canvas-title" /> */}
               <VideoCanvas>
                 <Panel panel={panel} />
               </VideoCanvas>
@@ -125,6 +114,7 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
           </motion.div>
         </motion.div>
       )}
+      <Cursor />
     </Layout>
   )
 }

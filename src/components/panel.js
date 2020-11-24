@@ -2,9 +2,13 @@ import React from "react"
 import { useTexture } from "@react-three/drei/useTexture"
 import { useAspect } from "@react-three/drei/useAspect"
 import { meshBounds } from "@react-three/drei/meshBounds"
-import ReactoryPlaceholder from "../images/Reactory-88.jpg"
-import HivePlaceholder from "../images/HIVE_FINAL.jpg"
-import CryptoPlaceholder from "../images/CRYPTO_FINAL.jpg"
+import ReactoryPlaceholder from "../images/Reactory-canvas.jpg"
+import HivePlaceholder from "../images/Hive_Canvas.jpg"
+import CryptoPlaceholder from "../images/Crypto_Canvas.jpg"
+import { Html } from "@react-three/drei"
+import ReactoryInfo from "../images/Reactory_Info.png"
+import CryptoInfo from "../images/Crypto_Info.png"
+import HiveInfo from "../images/Hive_Info.png"
 
 const Panel = ({ panel }) => {
   const Reactory = useTexture(ReactoryPlaceholder)
@@ -18,6 +22,23 @@ const Panel = ({ panel }) => {
       raycast={meshBounds}
       scale={panel === 1 ? rScale : panel === 2 ? cScale : hScale}
     >
+      <Html center>
+        {panel === 1 ? (
+          <img
+            src={ReactoryInfo}
+            alt="Reactory title"
+            className="canvas-title-1"
+          />
+        ) : panel === 2 ? (
+          <img
+            src={CryptoInfo}
+            alt="Crypto Butler title"
+            className="canvas-title-2"
+          />
+        ) : (
+          <img src={HiveInfo} alt="Hive title" className="canvas-title-3" />
+        )}
+      </Html>
       <planeBufferGeometry attach="geometry" />
       <meshBasicMaterial
         attach="material"

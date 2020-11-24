@@ -1,46 +1,32 @@
-import React, { useEffect, useState } from "react"
-// import { useCountUp } from "react-countup"
+import React, { useState } from "react"
 import { motion } from "framer-motion"
 import TransitionLink, { TransitionState } from "gatsby-plugin-transition-link"
-// import ProjectsTransition from "../images/Projects-Screen-Invert.jpg"
-// import KeyboardEventHandler from "react-keyboard-event-handler"
-// import classNames from "classnames"
 import Intro from "../components/intro"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 import Div100vh from "react-div-100vh"
-import useDeviceDetect from "../utils/useDeviceDetect"
-// import useBrowserDetect from "../utils/useBrowserDetect"
-// import Text from "../components/text"
-// import NavHelper from "../images/nav-helper.svg"
-// import { Noise } from "@react-three/postprocessing"
-// import Effects from "../components/effects"
-// import GradientOne from "../images/plastic1-tiny.jpg"
-// import NoiseCanvas from "../components/noise-canvas"
+import { isSafari } from "react-device-detect"
+import Cursor from "../components/cursor"
 
-// const MainMenuOverlay = ({ arrowPosition }) => (
-//   <div
-//     className="overlay-img"
-//     style={
-//       arrowPosition === 1
-//         ? { filter: "hue-rotate(0deg)" }
-//         : arrowPosition === 2
-//         ? { filter: "hue-rotate(120deg)" }
-//         : { filter: "hue-rotate(240deg)" }
-//     }
-//   >
-//     {arrowPosition === 1 ? (
-//       <Image src={1} />
-//     ) : arrowPosition === 2 ? (
-//       <Image src={2} />
-//     ) : arrowPosition === 3 ? (
-//       <Image src={3} />
-//     ) : null}
-//   </div>
-// )
+const IndexPage = ({ location }) => {
+  const [arrowPosition, changeArrowPosition] = useState(1)
+  // const { isMobile } = useDeviceDetect()
 
-const MainMenuUpperLeft = ({ arrowPosition }) => {
+  // const { state = {} } = location
+  // const { loadIntro } = state
+
+  // const windowAlert = () => {
+  //   typeof window !== `undefined` &&
+  //     window.alert(
+  //       "This website is currently optimized for Google Chrome! Please use it for the best experience."
+  //     )
+  // }
+
+  // useEffect(() => {
+  //   windowAlert()
+  // }, [])
+
   const title1 = "frontend"
   const title2 = "developer"
   const sentence = {
@@ -58,129 +44,47 @@ const MainMenuUpperLeft = ({ arrowPosition }) => {
     visible: { opacity: 1, y: 0, skew: 0, rotate: 0 },
   }
 
-  return (
-    <div className="main-menu-upper-left">
-      <div className="main-menu-header">
-        <h1 id="main-header">
-          hi! i'm brad carter, a <br />
-          <motion.span
-            key="frontend-developer"
-            variants={sentence}
-            initial="hidden"
-            animate="visible"
-          >
-            {title1.split("").map((char, index) => {
-              return (
-                <motion.span
-                  key={char + "-" + index}
-                  variants={letter}
-                  className="gradient-text-light"
-                >
-                  {char}
-                </motion.span>
-              )
-            })}{" "}
-            {title2.split("").map((char, index) => {
-              return (
-                <motion.span
-                  key={char + "-" + index}
-                  variants={letter}
-                  className="gradient-text-light"
-                >
-                  {char}
-                </motion.span>
-              )
-            })}
-          </motion.span>
-          <br /> based in austin, tx.
-        </h1>
-      </div>
-    </div>
-  )
-}
+  const cursor = document.getElementById("cursor")
 
-const MainMenuRight = ({ arrowPosition }) => (
-  <div className="main-menu-right">
-    {[...Array(9)].map((value, index) => (
-      <h6 className="main-menu-right-text" key={index}>
-        {arrowPosition === 1
-          ? "PROJECTS"
-          : arrowPosition === 2
-          ? "ABOUT ME"
-          : arrowPosition === 3
-          ? "CONTACT"
-          : null}
-      </h6>
-    ))}
-  </div>
-)
+  const handleMouseEnter = () => {
+    cursor.className = "cursor--gradient"
+  }
 
-const IndexPage = ({ location }) => {
-  const [arrowPosition, changeArrowPosition] = useState(1)
-  // const [contentLoaded, toggleContentLoaded] = useState(false)
-
-  // useEffect(() => {
-  //   toggleContentLoaded(true)
-  // }, [])
-
-  // const [loading, toggleLoading] = useState(true)
-  // const { countUp } = useCountUp({
-  //   end: 100,
-  //   onEnd: () => toggleLoading(false),
-  //   suffix: "%",
-  // })
-
-  const { isMobile } = useDeviceDetect()
-  // const { state = {} } = location
-  // const { loadIntro } = state
-  // const [entryLength, logEntryLength] = useState(null)
-  // const [rendered, setRendered] = useState(false)
-
-  // useEffect(() => {
-  //   window.sessionStorage.setItem("loaded", true)
-  //   })
-  // }, [])
-
-  // const windowAlert = () => {
-  //   typeof window !== `undefined` &&
-  //     window.alert(
-  //       "This website is currently optimized for Google Chrome! Please use it for the best experience."
-  //     )
-  // }
-
-  // useEffect(() => {
-  //   windowAlert()
-  // }, [])
+  const handleMouseLeave = () => {
+    cursor.className = "cursor"
+  }
 
   return (
     <Div100vh>
       <TransitionState>
-        {({ mount, transitionStatus, entry, exit }) => (
+        {({ transitionStatus, entry, exit }) => (
           <Layout page="index">
             <SEO title="portfolio" />
             {!location.action ? <Intro /> : null}
-            <motion.div
-              key="overlay"
-              className="overlay-img"
-              initial={false}
-              animate={{
-                filter:
-                  arrowPosition === 1
-                    ? "hue-rotate(0deg)"
-                    : arrowPosition === 2
-                    ? "hue-rotate(120deg)"
-                    : "hue-rotate(240deg)",
-              }}
-              transition={{ duration: 0.8 }}
-            >
-              {arrowPosition === 1 ? (
-                <Image src={1} />
-              ) : arrowPosition === 2 ? (
-                <Image src={2} />
-              ) : arrowPosition === 3 ? (
-                <Image src={3} />
-              ) : null}
-            </motion.div>
+            {!isSafari ? (
+              <motion.div
+                key="overlay"
+                className="overlay-img"
+                initial={false}
+                animate={{
+                  filter:
+                    arrowPosition === 1
+                      ? "hue-rotate(0deg)"
+                      : arrowPosition === 2
+                      ? "hue-rotate(120deg)"
+                      : "hue-rotate(240deg)",
+                }}
+                transition={{ duration: 0.8 }}
+              >
+                {arrowPosition === 1 ? (
+                  <Image src={1} />
+                ) : arrowPosition === 2 ? (
+                  <Image src={2} />
+                ) : arrowPosition === 3 ? (
+                  <Image src={3} />
+                ) : null}
+              </motion.div>
+            ) : null}
             {typeof window !== `undefined` && (
               <motion.div
                 className="main-menu"
@@ -200,8 +104,45 @@ const IndexPage = ({ location }) => {
                 }
               >
                 <div className="main-menu-left">
-                  <MainMenuUpperLeft arrowPosition={arrowPosition} />
-
+                  <div className="main-menu-upper-left">
+                    <div className="main-menu-header">
+                      <h1 id="main-header">
+                        hi! i'm brad carter, a <br />
+                        <motion.span
+                          key="frontend-developer"
+                          variants={sentence}
+                          initial="hidden"
+                          animate="visible"
+                          onMouseEnter={() => handleMouseEnter()}
+                          onMouseLeave={() => handleMouseLeave()}
+                        >
+                          {title1.split("").map((char, index) => {
+                            return (
+                              <motion.span
+                                key={char + "-" + index}
+                                variants={letter}
+                                className="gradient-text-light"
+                              >
+                                {char}
+                              </motion.span>
+                            )
+                          })}{" "}
+                          {title2.split("").map((char, index) => {
+                            return (
+                              <motion.span
+                                key={char + "-" + index}
+                                variants={letter}
+                                className="gradient-text-light"
+                              >
+                                {char}
+                              </motion.span>
+                            )
+                          })}
+                        </motion.span>
+                        <br /> based in austin, tx.
+                      </h1>
+                    </div>
+                  </div>
                   <div className="main-menu-lower-left">
                     <motion.h3
                       layout
@@ -212,6 +153,7 @@ const IndexPage = ({ location }) => {
                       &#62;&#62;
                     </motion.h3>
                     <TransitionLink
+                      className="hover-this--right"
                       id="projects-link"
                       to="projects"
                       exit={{
@@ -233,6 +175,7 @@ const IndexPage = ({ location }) => {
                       </h3>
                     </TransitionLink>
                     <TransitionLink
+                      className="hover-this--left"
                       id="about-me-link"
                       to="about"
                       exit={{
@@ -254,6 +197,7 @@ const IndexPage = ({ location }) => {
                       </h3>
                     </TransitionLink>
                     <TransitionLink
+                      className="hover-this--down"
                       id="contact-link"
                       to="contact"
                       exit={{
@@ -274,9 +218,26 @@ const IndexPage = ({ location }) => {
                         Contact
                       </h3>
                     </TransitionLink>
+                    <Cursor />
                   </div>
                 </div>
-                <MainMenuRight arrowPosition={arrowPosition} />
+                <div
+                  className="main-menu-right"
+                  onMouseEnter={() => handleMouseEnter()}
+                  onMouseLeave={() => handleMouseLeave()}
+                >
+                  {[...Array(9)].map((value, index) => (
+                    <h6 className="main-menu-right-text" key={index}>
+                      {arrowPosition === 1
+                        ? "PROJECTS"
+                        : arrowPosition === 2
+                        ? "ABOUT ME"
+                        : arrowPosition === 3
+                        ? "CONTACT"
+                        : null}
+                    </h6>
+                  ))}
+                </div>
               </motion.div>
             )}
           </Layout>
@@ -305,3 +266,24 @@ export default IndexPage
 // <Suspense fallback={null}>
 // <Text selector={arrowPosition} />
 // </Suspense>
+
+// const MainMenuOverlay = ({ arrowPosition }) => (
+//   <div
+//     className="overlay-img"
+//     style={
+//       arrowPosition === 1
+//         ? { filter: "hue-rotate(0deg)" }
+//         : arrowPosition === 2
+//         ? { filter: "hue-rotate(120deg)" }
+//         : { filter: "hue-rotate(240deg)" }
+//     }
+//   >
+//     {arrowPosition === 1 ? (
+//       <Image src={1} />
+//     ) : arrowPosition === 2 ? (
+//       <Image src={2} />
+//     ) : arrowPosition === 3 ? (
+//       <Image src={3} />
+//     ) : null}
+//   </div>
+// )
