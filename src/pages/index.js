@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 import Div100vh from "react-div-100vh"
-import { isSafari } from "react-device-detect"
+import { isMobile, isSafari } from "react-device-detect"
 import Cursor from "../components/cursor"
 
 const IndexPage = ({ location }) => {
@@ -61,7 +61,7 @@ const IndexPage = ({ location }) => {
           <Layout page="index">
             <SEO title="portfolio" />
             {!location.action ? <Intro /> : null}
-            {!isSafari ? (
+            {isSafari ? null : isMobile ? null : (
               <motion.div
                 key="overlay"
                 className="overlay-img"
@@ -84,7 +84,7 @@ const IndexPage = ({ location }) => {
                   <Image src={3} />
                 ) : null}
               </motion.div>
-            ) : null}
+            )}
             {typeof window !== `undefined` && (
               <motion.div
                 className="main-menu"
@@ -218,7 +218,7 @@ const IndexPage = ({ location }) => {
                         Contact
                       </h3>
                     </TransitionLink>
-                    <Cursor />
+                    {!isMobile ? <Cursor /> : null}
                   </div>
                 </div>
                 <div

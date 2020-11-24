@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useForm } from "react-hook-form"
+import { isMobile } from "react-device-detect"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Cursor from "../components/cursor"
@@ -201,7 +202,7 @@ const ContactPage = ({ transitionStatus, entry }) => {
                 </motion.div>
               ) : null}
             </AnimatePresence>
-            <Cursor />
+            {!isMobile ? <Cursor /> : null}
           </form>
         </motion.div>
       )}

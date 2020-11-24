@@ -1,5 +1,6 @@
 import React from "react"
 import { motion } from "framer-motion"
+import { isMobile } from "react-device-detect"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Image from "../components/image"
@@ -111,8 +112,8 @@ const AboutPage = ({ transitionStatus, entry }) => {
                       ))}
                     </div>
                   </div>
-                  <Cursor />
                 </div>
+                {!isMobile ? <Cursor /> : null}
               </div>
             </div>
           </motion.div>

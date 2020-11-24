@@ -6,6 +6,7 @@ import Panel from "../components/panel"
 import ChevronBigLeft from "../assets/chevron_big_left.svg"
 import ChevronBigRight from "../assets/chevron_big_right.svg"
 import { motion } from "framer-motion"
+import { isMobile } from "react-device-detect"
 import Cursor from "../components/cursor"
 
 const ProjectsPage = ({ transitionStatus, entry }) => {
@@ -114,7 +115,7 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
           </motion.div>
         </motion.div>
       )}
-      <Cursor />
+      {!isMobile ? <Cursor /> : null}
     </Layout>
   )
 }
