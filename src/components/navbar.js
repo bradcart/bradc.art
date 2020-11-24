@@ -74,6 +74,8 @@ const Navbar = ({ page }) => {
                   target="_blank"
                   rel="noreferrer"
                   className="social-link"
+                  onMouseEnter={() => handleMouseEnter()}
+                  onMouseLeave={() => handleMouseLeave()}
                 >
                   <img src={LinkedInIcon} alt="LinkedIn" id="linked-in" />
                 </a>
@@ -94,6 +96,8 @@ const Navbar = ({ page }) => {
                   target="_blank"
                   rel="noreferrer"
                   className="social-link"
+                  onMouseEnter={() => handleMouseEnter()}
+                  onMouseLeave={() => handleMouseLeave()}
                 >
                   <img src={LinkedInIcon} alt="LinkedIn" id="linked-in" />
                 </a>

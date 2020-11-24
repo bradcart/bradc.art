@@ -27,6 +27,16 @@ const AboutPage = ({ transitionStatus, entry }) => {
     "Reason",
   ]
 
+  const hoverLink = () => {
+    const cursor = document.getElementById("cursor")
+    cursor.classList.add("cursor--chevron-hover")
+  }
+
+  const unhoverLink = () => {
+    const cursor = document.getElementById("cursor")
+    cursor.classList.remove("cursor--chevron-hover")
+  }
+
   return (
     <Div100vh>
       <Layout page="about">
@@ -67,6 +77,8 @@ const AboutPage = ({ transitionStatus, entry }) => {
                         target="_blank"
                         rel="noreferrer"
                         id="content-link"
+                        onMouseEnter={() => hoverLink()}
+                        onMouseLeave={() => unhoverLink()}
                       >
                         music
                       </a>{" "}
@@ -76,6 +88,8 @@ const AboutPage = ({ transitionStatus, entry }) => {
                         target="_blank"
                         rel="noreferrer"
                         id="content-link"
+                        onMouseEnter={() => hoverLink()}
+                        onMouseLeave={() => unhoverLink()}
                       >
                         videos
                       </a>

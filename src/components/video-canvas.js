@@ -44,15 +44,15 @@ const VideoCanvas = ({ children }) => {
         <EffectComposer>
           <Noise />
           <Scanline />
-          {/* <Glitch
-          active
-          // ref={ref}
-          // mode={GlitchMode.DISABLED}
-          ratio={0.6}
-          delay={[2, 5]}
-          duration={[0.1, 0.3]}
-          strength={[0.01, 0.02]}
-        /> */}
+          <Glitch
+            active
+            // ref={ref}
+            // mode={GlitchMode.DISABLED}
+            ratio={0.6}
+            delay={[2, 5]}
+            duration={[0.1, 0.3]}
+            strength={[0.01, 0.02]}
+          />
         </EffectComposer>
       </Canvas>
     </>

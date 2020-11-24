@@ -130,9 +130,9 @@ const ContactPage = ({ transitionStatus, entry }) => {
               onChange={e => setValue(e.target.value)}
               style={
                 success
-                  ? { border: "1px ridge green" }
+                  ? { border: "1px solid green" }
                   : error
-                  ? { border: "1px ridge red" }
+                  ? { border: "1px solid red" }
                   : { border: "0.5px ridge rgba(240, 245, 243, 0.1)" }
               }
             />

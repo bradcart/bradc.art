@@ -26,10 +26,24 @@ const Intro = () => {
     timer === false
   )
 
+  // const handleMouseEnter = () => {
+  //   const cursor = document.getElementById("cursor")
+  //   cursor.className = "cursor--spinner"
+  // }
+
+  // const handleMouseLeave = () => {
+  //   const cursor = document.getElementById("cursor")
+  //   cursor.className = "cursor"
+  // }
+
   return (
     <>
       {mounted ? (
-        <div className="intro-container">
+        <div
+          className="intro-container"
+          // onMouseEnter={() => handleMouseEnter()}
+          // onMouseLeave={() => handleMouseLeave()}
+        >
           <div className="intro-text-wrapper">
             {isSafari ? (
               <div className="intro-safari-wrapper">

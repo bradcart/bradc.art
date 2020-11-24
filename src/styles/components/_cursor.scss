@@ -3,22 +3,35 @@
 .cursor {
   pointer-events: none;
   position: absolute;
-  //   transform-origin: (-100%, -100%);
-  //   transform: translate(-50%, -50%);
-  //   transform: scale(1, 1, 0);
   z-index: 2;
   width: 20px;
   height: 20px;
-  //   transform: scale(1);
-  //   opacity: 1;
   background-color: $ice-white;
   border-radius: 50%;
   mix-blend-mode: difference;
   transition-property: background-color, border-radius, width, height,
-    border-top, border-right, border-bottom, transform, opacity;
+    border-top, border-right, border-bottom, transform, opacity, box-shadow;
   transition-duration: 0.3s;
   transition-timing-function: ease;
 }
+
+// .cursor--spinner {
+//   @extend .cursor;
+//   background-color: transparent;
+//   border-radius: 50%;
+//   animation: spinneralt 1s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+//   border: 3px solid transparent;
+//   border-top-color: $ice-white;
+// }
+
+// @keyframes spinneralt {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(359deg);
+//   }
+// }
 
 .cursor--click {
   transform: scale(0.7);
@@ -33,6 +46,7 @@
   transition-timing-function: ease;
   transform: scale(2);
   background-color: red;
+  // box-shadow: 0 0 3pt 4pt red;
   // border: 1px solid $ice-white;
 }
 
@@ -102,9 +116,34 @@
 }
 
 .cursor--chevron-hover {
+  transition-property: transform, border, background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
   transform: scale(1.75);
   border: 1px solid $ice-white;
   background-color: transparent;
+}
+
+.cursor--link {
+  box-sizing: border-box;
+  background-color: transparent;
+  transform: scale(2);
+  width: 22px;
+  height: 22px;
+  border: 2px solid;
+  border-radius: 20px;
+}
+.cursor--link::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  width: 0;
+  height: 10px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 6px solid;
+  top: 4px;
+  left: 7px;
 }
 
 // .hover-this--chat:hover ~ .cursor {

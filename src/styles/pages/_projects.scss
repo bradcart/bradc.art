@@ -72,7 +72,8 @@
 .canvas-title-2 {
   @extend %canvas-title;
   width: 75vw;
-  margin-top: 6.5%;
+  transform: scale(1.01);
+  margin-top: 6%;
   @include media("<=phone") {
     width: 79vw;
   }
@@ -151,12 +152,12 @@
 //   white-space: nowrap;
 // }
 
-.project-info-icons {
-  display: inline-block;
-  fill: $ice-white;
-  width: 7.5%;
-  // height: 100%;
-}
+// .project-info-icons {
+//   display: inline-block;
+//   fill: $ice-white;
+//   width: 7.5%;
+//   // height: 100%;
+// }
 
 // .project-menu {
 //   height: 87.5vh;

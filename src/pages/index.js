@@ -13,20 +13,6 @@ const IndexPage = ({ location }) => {
   const [arrowPosition, changeArrowPosition] = useState(1)
   // const { isMobile } = useDeviceDetect()
 
-  // const { state = {} } = location
-  // const { loadIntro } = state
-
-  // const windowAlert = () => {
-  //   typeof window !== `undefined` &&
-  //     window.alert(
-  //       "This website is currently optimized for Google Chrome! Please use it for the best experience."
-  //     )
-  // }
-
-  // useEffect(() => {
-  //   windowAlert()
-  // }, [])
-
   const title1 = "frontend"
   const title2 = "developer"
   const sentence = {

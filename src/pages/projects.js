@@ -87,24 +87,11 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
           >
             <ChevronBigLeft />
           </motion.div>
-          <a
-            href={
-              panel === 1
-                ? "https://youtu.be/VmIQeYBJmB4"
-                : panel === 2
-                ? "https://youtu.be/IyU55GfZfGo"
-                : "https://www.linkedin.com/in/brad-t-carter/"
-            }
-            target="_blank"
-            rel="noreferrer"
-            className="project-link"
-          >
-            <div className="canvas-wrapper">
-              <VideoCanvas>
-                <Panel panel={panel} />
-              </VideoCanvas>
-            </div>
-          </a>
+          <div className="canvas-wrapper">
+            <VideoCanvas>
+              <Panel panel={panel} />
+            </VideoCanvas>
+          </div>
           <motion.div
             className={panel < 3 ? "chevron-right" : "chevron-right-disabled"}
             onClick={() => nextPanel()}
