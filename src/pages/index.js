@@ -44,14 +44,18 @@ const IndexPage = ({ location }) => {
     visible: { opacity: 1, y: 0, skew: 0, rotate: 0 },
   }
 
-  const cursor = document.getElementById("cursor")
-
   const handleMouseEnter = () => {
-    cursor.className = "cursor--gradient"
+    if (typeof document !== undefined) {
+      const cursor = document.getElementById("cursor")
+      cursor.className = "cursor--gradient"
+    }
   }
 
   const handleMouseLeave = () => {
-    cursor.className = "cursor"
+    if (typeof document !== undefined) {
+      const cursor = document.getElementById("cursor")
+      cursor.className = "cursor"
+    }
   }
 
   return (
