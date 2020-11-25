@@ -38,7 +38,7 @@ const Panel = ({ panel }) => {
               ? "https://youtu.be/VmIQeYBJmB4"
               : panel === 2
               ? "https://youtu.be/IyU55GfZfGo"
-              : "https://www.linkedin.com/in/brad-t-carter/"
+              : "https://github.com/bradc1993/HiveApp/tree/master"
           }
           target="_blank"
           rel="noreferrer"

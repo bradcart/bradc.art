@@ -46,7 +46,7 @@
   transition-timing-function: ease;
   transform: scale(2);
   background-color: red;
-  // box-shadow: 0 0 3pt 4pt red;
+  box-shadow: 0 0 3pt 4pt red;
   // border: 1px solid $ice-white;
 }
 
@@ -127,10 +127,10 @@
 .cursor--link {
   box-sizing: border-box;
   background-color: transparent;
-  transform: scale(2);
+  transform: scale(4);
   width: 22px;
   height: 22px;
-  border: 2px solid;
+  border: 1px solid;
   border-radius: 20px;
 }
 .cursor--link::before {
@@ -142,8 +142,8 @@
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   border-left: 6px solid;
-  top: 4px;
-  left: 7px;
+  top: 5px;
+  left: 8px;
 }
 
 // .hover-this--chat:hover ~ .cursor {

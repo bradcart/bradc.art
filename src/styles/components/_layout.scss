@@ -1,4 +1,5 @@
 @import "../helpers/variables";
+@import "../breakpoints/breakpoints";
 
 .background {
   // position: absolute;
@@ -21,6 +22,9 @@
   // background-position: center;
   // background-size: cover;
   // overflow: hidden;
+  // @include media("<=phone") {
+  //   height: 87.5vh;
+  // }
 }
 
 .film-grain {

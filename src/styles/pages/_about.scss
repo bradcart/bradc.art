@@ -8,6 +8,9 @@ $sunset-gradient: linear-gradient(90deg, #d53369 0%, #daae51 100%);
   // padding-top: 7.5vh;
   overflow-y: auto;
   overflow-x: hidden;
+  @include media("<=phone") {
+    height: 87.5vh;
+  }
 }
 .about-page {
   height: 100%;
@@ -53,6 +56,9 @@ $sunset-gradient: linear-gradient(90deg, #d53369 0%, #daae51 100%);
   align-items: space-between;
   @include media("<=laptop") {
     padding-top: 10%;
+  }
+  @include media("<=phone") {
+    padding-top: 20%;
   }
 }
 #about-header {

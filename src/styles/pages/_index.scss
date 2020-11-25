@@ -24,26 +24,63 @@
   mix-blend-mode: hue;
   pointer-events: none;
   // overflow: hidden;
-  @include media("<=phone") {
-    height: 50%;
-  }
+  // @include media("<=phone") {
+  //   height: 50%;
+  // }
 }
 
-#oi-1 {
-  filter: hue-rotate(0deg);
-  // position: absolute;
-  // transform-style: preserve-3d;
-  // -webkit-transform-style: preserve-3d;
+.mobile-gradient-1 {
+  background: #1a2a6c; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #fdbb2d,
+    #b21f1f,
+    #22347d
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #fdbb2d,
+    #b21f1f,
+    #22347d
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
 }
-#oi-2 {
-  filter: hue-rotate(120deg);
-  // transform-style: preserve-3d;
-  // -webkit-transform-style: preserve-3d;
+
+.mobile-gradient-2 {
+  background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
 }
-#oi-3 {
-  filter: hue-rotate(240deg);
-  // transform-style: preserve-3d;
-  // -webkit-transform-style: preserve-3d;
+
+.mobile-gradient-3 {
+  background: #a80077; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #66ff00,
+    #a80077
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #66ff00,
+    #a80077
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
 }
 
 .main-menu {
@@ -73,6 +110,9 @@
   // justify-content: center;
   // align-content: center;
   align-items: center;
+  @include media("<=phone") {
+    height: 87.5vh;
+  }
 }
 .main-menu-left {
   justify-self: end;
@@ -149,7 +189,8 @@
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1/3fr 1/3fr 1/3fr;
   row-gap: 2.5%;
-  place-items: start;
+  justify-items: start;
+  align-items: baseline;
   align-content: start;
   @include media("<=phone") {
     align-self: start;
@@ -159,16 +200,17 @@
 }
 .mmo-selector {
   grid-column: 1;
-  align-self: end;
+  grid-row: 1;
+  // align-self: center;
   // justify-self: start;
   // padding-bottom: 25%;
   // align-self: center;
-  height: 72.5%;
+  // height: 72.5%;
   color: $deep-black;
   text-shadow: -1px -1px 0 $gradient-text, 1px -1px 0 $gradient-text,
     -1px 1px 0 $gradient-text, 1px 1px 0 $gradient-text;
   font-family: "Hanson", sans-serif;
-  font-size: calc(1.15rem + 2vw);
+  font-size: calc(2rem + 1.4vw);
   @include media("<=desktop") {
     font-size: calc(1.45rem + 1vw);
   }

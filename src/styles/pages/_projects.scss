@@ -13,6 +13,14 @@
   grid-template-columns: 10% 80% 10%;
   place-items: center;
 }
+.mobile-msg {
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+}
 .chevron-left {
   grid-row: 2;
   width: 70%;
@@ -56,6 +64,9 @@
   width: 100%;
   // position: relative;
   // cursor: pointer;
+  @include media("<=phone") {
+    height: 75%;
+  }
 }
 %canvas-title {
   height: auto;

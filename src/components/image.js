@@ -53,7 +53,9 @@ const Image = ({ src, imageClass }) => {
     // left: 0,
     width: "100vw",
     height: "100vh",
-    // mixBlendMode: "hue",
+    position: "inherit",
+    zIndex: "inherit",
+    mixBlendMode: "hue",
     // pointerEvents: "none",
     // zIndex: 2,
     // transition: "filter 0.8s ease-out",
@@ -84,7 +86,7 @@ const Image = ({ src, imageClass }) => {
       ) : src === 2 ? (
         <Img
           fluid={data.gradient2.childImageSharp.fluid}
-          loading="eager"
+          // loading="eager"
           // fadeIn={false}
           // placeholderClassName={imageClass}
           alt="About Me gradient text"
@@ -96,7 +98,7 @@ const Image = ({ src, imageClass }) => {
       ) : src === 3 ? (
         <Img
           fluid={data.gradient3.childImageSharp.fluid}
-          loading="eager"
+          // loading="eager"
           // fadeIn={false}
           // placeholderClassName={imageClass}
           alt="Contact gradient text"

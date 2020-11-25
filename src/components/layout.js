@@ -19,7 +19,6 @@ const Layout = ({ page, children }) => {
     <div className="background">
       {!isMobile && page !== "projects" ? <div className="film-grain" /> : null}
       <Navbar page={page} />
-      {/* <Cursor /> */}
       {children}
       {/* <footer style={{
           marginTop: `2rem`
