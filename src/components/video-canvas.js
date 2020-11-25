@@ -55,7 +55,6 @@ const VideoCanvas = ({ children }) => {
           />
         </EffectComposer>
       </Canvas>
-      <Loader />
     </>
   )
 }
