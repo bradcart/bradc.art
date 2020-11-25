@@ -26,6 +26,7 @@ const Panel = ({ panel }) => {
     const cursor = document.getElementById("cursor")
     cursor.classList.remove("cursor--link")
   }
+
   return (
     <mesh
       raycast={meshBounds}

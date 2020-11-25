@@ -79,11 +79,6 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
           }
           transition={{ duration: 0.4 }}
         >
-          {isMobile ? (
-            <div className="mobile-msg">
-              tap project title for demo or arrows to cycle.
-            </div>
-          ) : null}
           <motion.div
             className={panel > 1 ? "chevron-left" : "chevron-left-disabled"}
             onClick={() => prevPanel()}

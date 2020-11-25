@@ -6,7 +6,7 @@ import {
   Noise,
   Scanline,
 } from "@react-three/postprocessing"
-// import { Loader } from "@react-three/drei/Loader"
+import { Loader } from "@react-three/drei"
 // import { GlitchMode } from "postprocessing"
 // import ProjectLinks from "./project-links"
 
@@ -55,6 +55,7 @@ const VideoCanvas = ({ children }) => {
           />
         </EffectComposer>
       </Canvas>
+      <Loader />
     </>
   )
 }
