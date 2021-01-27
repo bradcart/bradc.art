@@ -6,7 +6,7 @@ import {
   Noise,
   Scanline,
 } from "@react-three/postprocessing"
-import { Loader } from "@react-three/drei"
+// import { Loader } from "@react-three/drei"
 // import { GlitchMode } from "postprocessing"
 // import ProjectLinks from "./project-links"
 

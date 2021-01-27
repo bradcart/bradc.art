@@ -12,19 +12,17 @@ const AboutPage = ({ transitionStatus, entry }) => {
     "JavaScript",
     "React",
     "Gatsby",
-    "Material UI",
-    "Bootstrap",
     "CSS/SCSS",
-    "Ruby on Rails",
+    "Material-UI",
+    "Bootstrap",
   ]
   const software = [
-    "Adobe XD",
+    "Webflow",
     "Figma",
+    "Adobe XD",
     "Photoshop",
     "Illustrator",
     "Premiere Pro",
-    "Pro Tools",
-    "Reason",
   ]
 
   const hoverLink = () => {
@@ -67,7 +65,7 @@ const AboutPage = ({ transitionStatus, entry }) => {
                 <h2 id="about-header">about me</h2>
                 <div className="about-page-right-paragraph">
                   <p>
-                    Frontend developer with a degree in Audio Engineering. Enjoy
+                    Frontend developer with a background in audio engineering. Enjoy
                     creative problem-solving and learning whatever I can to
                     expand my skills as both a programmer and designer. Hobbies
                     include making{" "}

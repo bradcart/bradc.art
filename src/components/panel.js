@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useTexture } from "@react-three/drei/useTexture"
 import { useAspect } from "@react-three/drei/useAspect"
 import { meshBounds } from "@react-three/drei/meshBounds"
@@ -11,6 +11,7 @@ import CryptoInfo from "../images/Crypto_Info.png"
 import HiveInfo from "../images/Hive_Info.png"
 
 const Panel = ({ panel }) => {
+  const [loaded, toggleLoaded] = useState(false)
   const Reactory = useTexture(ReactoryPlaceholder)
   const Crypto = useTexture(CryptoPlaceholder)
   const Hive = useTexture(HivePlaceholder)
@@ -26,6 +27,10 @@ const Panel = ({ panel }) => {
     const cursor = document.getElementById("cursor")
     cursor.classList.remove("cursor--link")
   }
+
+  useEffect(() => {
+    toggleLoaded(true)
+  }, [])
 
   return (
     <mesh
@@ -75,7 +80,15 @@ const Panel = ({ panel }) => {
       <planeBufferGeometry attach="geometry" />
       <meshBasicMaterial
         attach="material"
-        map={panel === 1 ? Reactory : panel === 2 ? Crypto : Hive}
+        map={
+          loaded && panel === 1
+            ? Reactory
+            : loaded && panel === 2
+            ? Crypto
+            : loaded && panel === 3
+            ? Hive
+            : null
+        }
       />
     </mesh>
   )
