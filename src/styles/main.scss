@@ -1,11 +1,5 @@
 @import url("https://use.typekit.net/bbp3rrs.css");
 
-@font-face {
-  font-family: "Hanson";
-  src: url("../fonts/hanson-bold-webfont.woff2") format("woff2"),
-    url("../fonts/hanson-bold-webfont.woff") format("woff");
-}
-
 @import "components/intro";
 @import "components/layout";
 @import "components/cursor";
