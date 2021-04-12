@@ -18,7 +18,6 @@ module.exports = {
     title: `brad carter.`,
     description: `Portfolio for Brad Carter - Frontend Developer based in Austin, TX.`,
     author: `Brad Carter`,
-    image: `/images/bradcart-opengraph.png`
   },
   plugins: [
     `gatsby-plugin-sass`,
