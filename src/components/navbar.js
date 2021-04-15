@@ -80,16 +80,18 @@ const Navbar = ({ page }) => {
                 >
                   <img src={LinkedInIcon} alt="LinkedIn" id="linked-in" />
                 </a>
-                <a
-                  href="https://github.com/bradcart"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="social-link"
-                  onMouseEnter={() => handleMouseEnter()}
-                  onMouseLeave={() => handleMouseLeave()}
-                >
-                  <img src={GitHubIcon} alt="GitHub" id="github" />
-                </a>
+                <div style={{ border: "1px solid transparent", borderRadius: "5px", overflow: "hidden" }} className="github-wrapper">
+                  <a
+                    href="https://github.com/bradcart"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="social-link"
+                    onMouseEnter={() => handleMouseEnter()}
+                    onMouseLeave={() => handleMouseLeave()}
+                  >
+                    <img src={GitHubIcon} alt="GitHub" id="github" />
+                  </a>
+                </div>
               </motion.div>
             </div>
           )
