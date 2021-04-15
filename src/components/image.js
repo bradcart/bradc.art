@@ -81,30 +81,30 @@ const Image = ({ src, imageClass }) => {
           // style={{ height: "100vh", width: "100vw" }}
           // className="oi-1"
           style={styling}
-          // imgStyle={{filter: "hue-rotate(0deg)"}}
+        // imgStyle={{filter: "hue-rotate(0deg)"}}
         />
       ) : src === 2 ? (
         <Img
           fluid={data.gradient2.childImageSharp.fluid}
-          // loading="eager"
+          loading="eager"
           // fadeIn={false}
           // placeholderClassName={imageClass}
           alt="About Me gradient text"
           // style={{ height: "100vh", width: "100vw" }}
           // className="oi-2"
           style={styling}
-          // imgStyle={{filter: "hue-rotate(120deg)"}}
+        // imgStyle={{filter: "hue-rotate(120deg)"}}
         />
       ) : src === 3 ? (
         <Img
           fluid={data.gradient3.childImageSharp.fluid}
-          // loading="eager"
+          loading="eager"
           // fadeIn={false}
           // placeholderClassName={imageClass}
           alt="Contact gradient text"
           // className="oi-3"
           style={styling}
-          // imgStyle={{filter: "hue-rotate(240deg)"}}
+        // imgStyle={{filter: "hue-rotate(240deg)"}}
         />
       ) : src === 8 ? (
         <Img
