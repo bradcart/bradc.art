@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import TransitionLink, { TransitionState } from "gatsby-plugin-transition-link"
 import ChevronDuoLeft from "../assets/chevron_duo_left.svg"
 import LinkedInIcon from "../images/linkedin_icon.svg"
+import GitHubIcon from "../images/github_icon.svg"
 
 const Navbar = ({ page }) => {
   const handleMouseEnter = () => {
@@ -34,17 +35,17 @@ const Navbar = ({ page }) => {
                     entry={
                       page === "contact"
                         ? {
-                            delay: 0.4,
-                            length: 0.4,
-                            state: { y: window.innerHeight, fromPage: true },
-                          }
+                          delay: 0.4,
+                          length: 0.4,
+                          state: { y: window.innerHeight, fromPage: true },
+                        }
                         : page === "about"
-                        ? {
+                          ? {
                             delay: 0.4,
                             length: 0.4,
                             state: { x: window.innerWidth, fromPage: true },
                           }
-                        : {
+                          : {
                             delay: 0.4,
                             length: 0.4,
                             state: { x: -window.innerWidth, fromPage: true },
@@ -79,6 +80,16 @@ const Navbar = ({ page }) => {
                 >
                   <img src={LinkedInIcon} alt="LinkedIn" id="linked-in" />
                 </a>
+                <a
+                  href="https://github.com/bradcart"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-link"
+                  onMouseEnter={() => handleMouseEnter()}
+                  onMouseLeave={() => handleMouseLeave()}
+                >
+                  <img src={GitHubIcon} alt="GitHub" id="github" />
+                </a>
               </motion.div>
             </div>
           )
@@ -101,6 +112,18 @@ const Navbar = ({ page }) => {
                 >
                   <img src={LinkedInIcon} alt="LinkedIn" id="linked-in" />
                 </a>
+                <div style={{ border: "1px solid transparent", borderRadius: "5px", overflow: "hidden" }} className="github-wrapper">
+                  <a
+                    href="https://github.com/bradcart"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="social-link"
+                    onMouseEnter={() => handleMouseEnter()}
+                    onMouseLeave={() => handleMouseLeave()}
+                  >
+                    <img src={GitHubIcon} alt="GitHub" id="github" />
+                  </a>
+                </div>
               </motion.div>
             </div>
           )
