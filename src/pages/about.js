@@ -12,9 +12,10 @@ const AboutPage = ({ transitionStatus, entry }) => {
     "JavaScript",
     "React",
     "Gatsby",
+    "Framer Motion",
+    "React-Three-Fiber",
     "CSS/SCSS",
     "Material-UI",
-    "Bootstrap",
   ]
   const software = [
     "Webflow",
@@ -65,9 +66,7 @@ const AboutPage = ({ transitionStatus, entry }) => {
                 <h2 id="about-header">about me</h2>
                 <div className="about-page-right-paragraph">
                   <p>
-                    Frontend developer with a background in audio engineering. Enjoy
-                    creative problem-solving and learning whatever I can to
-                    expand my skills as both a programmer and designer. Hobbies
+                    Frontend developer & UI designer with a background in audio engineering. My goal is to build visually impressive websites that convey strong brand identity and leave a lasting impression. Hobbies
                     include making{" "}
                     <a
                       href="https://soundcloud.com/big_jackson/sets/bradc-art/s-QZnJYSomzpf"
