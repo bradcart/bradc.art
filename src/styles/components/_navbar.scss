@@ -69,30 +69,40 @@
   color: $ice-white-hover;
 }
 .navbar-right {
-  width: 160px;
+  width: 240px;
   display: inline-flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  padding-right: 1.25%;
+  padding-right: 1.5%;
 }
 .social-link {
-  height: 100%;
-}
-#linked-in {
-  // width: 100%;
-  height: 100%;
-  transition: transform 0.3s ease;
-  transform-origin: center;
-  transform: scale(1.5);
+  width: 14.5%;
+  opacity: 0.9;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  overflow: hidden;
+  transition-property: transform, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
   &:hover {
-    transform: scale(1.7);
+    transform: scale(1.25);
+    opacity: 1;
   }
 }
-.github-wrapper {
-  // height: 100%;
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-}
-
+// #linked-in {
+//   // width: 100%;
+//   height: 100%;
+//   transition: transform 0.3s ease;
+//   transform-origin: center;
+//   transform: scale(1.5);
+//   &:hover {
+//     transform: scale(1.7);
+//   }
+// }
+// .github-wrapper {
+//   // height: 100%;
+//   transition: transform 0.3s ease;
+//   &:hover {
+//     transform: scale(1.1);
+//   }
+// }

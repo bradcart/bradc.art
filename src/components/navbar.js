@@ -2,8 +2,9 @@ import React from "react"
 import { motion } from "framer-motion"
 import TransitionLink, { TransitionState } from "gatsby-plugin-transition-link"
 import ChevronDuoLeft from "../assets/chevron_duo_left.svg"
-import LinkedInIcon from "../images/linkedin_icon.svg"
-import GitHubIcon from "../images/github_icon.svg"
+import LinkedInIcon from "../assets/linkedin-2.svg"
+import GitHubIcon from "../assets/github-2.svg"
+import MediumIcon from "../assets/medium-2.svg"
 
 const Navbar = ({ page }) => {
   const handleMouseEnter = () => {
@@ -78,20 +79,28 @@ const Navbar = ({ page }) => {
                   onMouseEnter={() => handleMouseEnter()}
                   onMouseLeave={() => handleMouseLeave()}
                 >
-                  <img src={LinkedInIcon} alt="LinkedIn" id="linked-in" />
+                  <LinkedInIcon />
                 </a>
-                <div style={{ border: "1px solid transparent", borderRadius: "5px", overflow: "hidden" }} className="github-wrapper">
-                  <a
-                    href="https://github.com/bradcart"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="social-link"
-                    onMouseEnter={() => handleMouseEnter()}
-                    onMouseLeave={() => handleMouseLeave()}
-                  >
-                    <img src={GitHubIcon} alt="GitHub" id="github" />
-                  </a>
-                </div>
+                <a
+                  href="https://github.com/bradcart"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-link"
+                  onMouseEnter={() => handleMouseEnter()}
+                  onMouseLeave={() => handleMouseLeave()}
+                >
+                  <GitHubIcon />
+                </a>
+                <a
+                  href="https://brad-carter.medium.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-link"
+                  onMouseEnter={() => handleMouseEnter()}
+                  onMouseLeave={() => handleMouseLeave()}
+                >
+                  <MediumIcon />
+                </a>
               </motion.div>
             </div>
           )
@@ -112,20 +121,28 @@ const Navbar = ({ page }) => {
                   onMouseEnter={() => handleMouseEnter()}
                   onMouseLeave={() => handleMouseLeave()}
                 >
-                  <img src={LinkedInIcon} alt="LinkedIn" id="linked-in" />
+                  <LinkedInIcon />
                 </a>
-                <div style={{ border: "1px solid transparent", borderRadius: "5px", overflow: "hidden" }} className="github-wrapper">
-                  <a
-                    href="https://github.com/bradcart"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="social-link"
-                    onMouseEnter={() => handleMouseEnter()}
-                    onMouseLeave={() => handleMouseLeave()}
-                  >
-                    <img src={GitHubIcon} alt="GitHub" id="github" />
-                  </a>
-                </div>
+                <a
+                  href="https://github.com/bradcart"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-link"
+                  onMouseEnter={() => handleMouseEnter()}
+                  onMouseLeave={() => handleMouseLeave()}
+                >
+                  <GitHubIcon />
+                </a>
+                <a
+                  href="https://brad-carter.medium.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-link"
+                  onMouseEnter={() => handleMouseEnter()}
+                  onMouseLeave={() => handleMouseLeave()}
+                >
+                  <MediumIcon />
+                </a>
               </motion.div>
             </div>
           )
