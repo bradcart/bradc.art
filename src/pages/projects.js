@@ -92,8 +92,8 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
             onClick={() => prevPanel()}
             whileTap={panel > 1 ? { scale: 0.9 } : { scale: 1 }}
             whileHover={panel > 1 ? { scale: 1.2 } : { scale: 1 }}
-            onMouseEnter={() => handleMouseEnter()}
-            onMouseLeave={() => handleMouseLeave()}
+            onHoverStart={panel > 1 ? () => handleMouseEnter() : null}
+            onHoverEnd={() => handleMouseLeave()}
           >
             <ChevronBigLeft />
           </motion.div>
@@ -107,8 +107,8 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
             onClick={() => nextPanel()}
             whileTap={panel < 4 ? { scale: 0.9 } : { scale: 1 }}
             whileHover={panel < 4 ? { scale: 1.2 } : { scale: 1 }}
-            onMouseEnter={() => handleMouseEnter()}
-            onMouseLeave={() => handleMouseLeave()}
+            onHoverStart={panel < 4 ? () => handleMouseEnter() : null}
+            onHoverEnd={() => handleMouseLeave()}
           >
             <ChevronBigRight />
           </motion.div>

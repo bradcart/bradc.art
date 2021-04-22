@@ -36,7 +36,6 @@ const IndexPage = ({ location }) => {
       cursor.className = "cursor--gradient"
     }
   }
-
   const handleMouseLeave = () => {
     if (typeof document !== undefined) {
       const cursor = document.getElementById("cursor")
@@ -49,7 +48,7 @@ const IndexPage = ({ location }) => {
       {({ transitionStatus, entry, exit }) => (
         <Layout page="index">
           <SEO title="portfolio" />
-          {isMobile ? null : !location.action ? <Intro /> : null}
+          {/* {isMobile ? null : !location.action ? <Intro /> : null} */}
           {isSafari ? null : isMobile ? null : (
             <motion.div
               key="overlay"
@@ -79,7 +78,7 @@ const IndexPage = ({ location }) => {
               className="main-menu"
               key="main-wrapper"
               initial={
-                !location.action ? { y: window.innerHeight } : entry.state
+                !location.action ? false : entry.state
               }
               animate={
                 transitionStatus === "exiting"

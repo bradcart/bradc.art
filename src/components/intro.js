@@ -17,6 +17,7 @@ const Intro = () => {
     changeTitle("DONE.")
   }, 3500)
 
+  //after Timer runs out (becomes false), set Mounted to false.
   const [mounted, toggleMounted] = useState(true)
   useConditionalTimeout(
     () => {
@@ -39,11 +40,7 @@ const Intro = () => {
   return (
     <>
       {mounted ? (
-        <div
-          className="intro-container"
-          // onMouseEnter={() => handleMouseEnter()}
-          // onMouseLeave={() => handleMouseLeave()}
-        >
+        <div className="intro-container">
           <div className="intro-text-wrapper">
             {isSafari ? (
               <div className="intro-safari-wrapper">

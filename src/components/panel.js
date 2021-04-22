@@ -3,7 +3,7 @@ import { useTexture } from "@react-three/drei/useTexture"
 import { useAspect } from "@react-three/drei/useAspect"
 import { meshBounds } from "@react-three/drei/meshBounds"
 import ReactoryPlaceholder from "../images/Reactory-canvas.jpg"
-import LapaluxPlaceholder from "../images/Lapalux-canvas-5.jpg"
+import LapaluxPlaceholder from "../images/Lapalux-canvas.jpg"
 import HivePlaceholder from "../images/Hive_Canvas.jpg"
 import CryptoPlaceholder from "../images/Crypto_Canvas.jpg"
 import { Html } from "@react-three/drei"
@@ -38,7 +38,7 @@ const Panel = ({ panel }) => {
   return (
     <mesh
       raycast={meshBounds}
-      scale={panel === 1 ? rScale : panel === 2 ? rScale : panel === 3 ? cScale : hScale}
+      scale={panel <= 2 ? rScale : panel === 3 ? cScale : hScale}
     >
       <Html center>
         <a
