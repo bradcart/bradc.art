@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { motion } from "framer-motion"
 import TransitionLink, { TransitionState } from "gatsby-plugin-transition-link"
-import Intro from "../components/intro"
+// import Intro from "../components/intro"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
@@ -104,8 +104,8 @@ const IndexPage = ({ location }) => {
                         variants={sentence}
                         initial="hidden"
                         animate="visible"
-                        onMouseEnter={() => handleMouseEnter()}
-                        onMouseLeave={() => handleMouseLeave()}
+                        onHoverStart={() => handleMouseEnter()}
+                        onHoverEnd={() => handleMouseLeave()}
                       >
                         {title1.split("").map((char, index) => {
                           return (
@@ -157,7 +157,7 @@ const IndexPage = ({ location }) => {
                     }}
                   >
                     <h3
-                      onMouseOver={() => changeArrowPosition(1)}
+                      onMouseEnter={() => changeArrowPosition(1)}
                       onTouchStart={() => changeArrowPosition(1)}
                       className={
                         arrowPosition === 1 ? "active-link" : "outline"
@@ -180,7 +180,7 @@ const IndexPage = ({ location }) => {
                     }}
                   >
                     <h3
-                      onMouseOver={() => changeArrowPosition(2)}
+                      onMouseEnter={() => changeArrowPosition(2)}
                       onTouchStart={() => changeArrowPosition(2)}
                       className={
                         arrowPosition === 2 ? "active-link" : "outline"
@@ -203,7 +203,7 @@ const IndexPage = ({ location }) => {
                     }}
                   >
                     <h3
-                      onMouseOver={() => changeArrowPosition(3)}
+                      onMouseEnter={() => changeArrowPosition(3)}
                       onTouchStart={() => changeArrowPosition(3)}
                       className={
                         arrowPosition === 3 ? "active-link" : "outline"
