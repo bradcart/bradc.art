@@ -29,7 +29,7 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
   // const prevCard = usePrevious(selectedCard)
   const [panel, changePanel] = useState(1)
   function nextPanel() {
-    if (panel < 3) {
+    if (panel < 4) {
       changePanel(panel + 1)
     }
   }
@@ -65,6 +65,14 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
   //     x: forwardDirection ? -1000 : 1000,
   //   },
   // }
+  const handleMouseEnter = () => {
+    const cursor = document.getElementById("cursor")
+    cursor.classList.add("cursor--chevron-hover")
+  }
+  const handleMouseLeave = () => {
+    const cursor = document.getElementById("cursor")
+    cursor.classList.remove("cursor--chevron-hover")
+  }
 
   return (
     <Layout page="projects">
@@ -84,6 +92,8 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
             onClick={() => prevPanel()}
             whileTap={panel > 1 ? { scale: 0.9 } : { scale: 1 }}
             whileHover={panel > 1 ? { scale: 1.2 } : { scale: 1 }}
+            onMouseEnter={() => handleMouseEnter()}
+            onMouseLeave={() => handleMouseLeave()}
           >
             <ChevronBigLeft />
           </motion.div>
@@ -93,10 +103,12 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
             </VideoCanvas>
           </div>
           <motion.div
-            className={panel < 3 ? "chevron-right" : "chevron-right-disabled"}
+            className={panel < 4 ? "chevron-right" : "chevron-right-disabled"}
             onClick={() => nextPanel()}
-            whileTap={panel < 3 ? { scale: 0.9 } : { scale: 1 }}
-            whileHover={panel < 3 ? { scale: 1.2 } : { scale: 1 }}
+            whileTap={panel < 4 ? { scale: 0.9 } : { scale: 1 }}
+            whileHover={panel < 4 ? { scale: 1.2 } : { scale: 1 }}
+            onMouseEnter={() => handleMouseEnter()}
+            onMouseLeave={() => handleMouseLeave()}
           >
             <ChevronBigRight />
           </motion.div>

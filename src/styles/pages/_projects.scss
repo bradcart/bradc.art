@@ -82,6 +82,11 @@
 }
 .canvas-title-2 {
   @extend %canvas-title;
+  width: 70vw;
+  margin-top: 6.5%;
+}
+.canvas-title-3 {
+  @extend %canvas-title;
   width: 75vw;
   transform: scale(1.01);
   margin-top: 6%;
@@ -89,7 +94,7 @@
     width: 79vw;
   }
 }
-.canvas-title-3 {
+.canvas-title-4 {
   @extend %canvas-title;
   width: 33vw;
   margin-top: 15%;
