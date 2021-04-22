@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { motion } from "framer-motion"
 import TransitionLink, { TransitionState } from "gatsby-plugin-transition-link"
-// import Intro from "../components/intro"
+import Intro from "../components/intro"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
@@ -48,7 +48,7 @@ const IndexPage = ({ location }) => {
       {({ transitionStatus, entry, exit }) => (
         <Layout page="index">
           <SEO title="portfolio" />
-          {/* {isMobile ? null : !location.action ? <Intro /> : null} */}
+          {isMobile ? null : !location.action ? <Intro /> : null}
           {isSafari ? null : isMobile ? null : (
             <motion.div
               key="overlay"
@@ -59,8 +59,8 @@ const IndexPage = ({ location }) => {
                   arrowPosition === 1
                     ? "hue-rotate(0deg)"
                     : arrowPosition === 2
-                    ? "hue-rotate(120deg)"
-                    : "hue-rotate(240deg)",
+                      ? "hue-rotate(120deg)"
+                      : "hue-rotate(240deg)",
               }}
               transition={{ duration: 0.8 }}
             >
@@ -226,10 +226,10 @@ const IndexPage = ({ location }) => {
                       {arrowPosition === 1
                         ? "PROJECTS"
                         : arrowPosition === 2
-                        ? "ABOUT ME"
-                        : arrowPosition === 3
-                        ? "CONTACT"
-                        : null}
+                          ? "ABOUT ME"
+                          : arrowPosition === 3
+                            ? "CONTACT"
+                            : null}
                     </h6>
                   ))}
                 </div>
