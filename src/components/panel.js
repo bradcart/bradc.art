@@ -11,6 +11,7 @@ import ReactoryInfo from "../images/Reactory_Info.png"
 import LapaluxInfo from "../images/Lapalux_Info_2.png"
 import CryptoInfo from "../images/Crypto_Info.png"
 import HiveInfo from "../images/Hive_Info.png"
+import { isMobile } from "react-device-detect"
 
 const Panel = ({ panel }) => {
   const [loaded, toggleLoaded] = useState(false)
@@ -22,13 +23,17 @@ const Panel = ({ panel }) => {
   const cScale = useAspect("cover", 1852, 1042)
   const hScale = useAspect("cover", 1917, 965)
   const hoverLink = () => {
-    const cursor = document.getElementById("cursor")
-    cursor.classList.add("cursor--link")
+    if (!isMobile) {
+      const cursor = document.getElementById("cursor")
+      cursor.classList.add("cursor--link")
+    }
   }
 
   const unhoverLink = () => {
-    const cursor = document.getElementById("cursor")
-    cursor.classList.remove("cursor--link")
+    if (!isMobile) {
+      const cursor = document.getElementById("cursor")
+      cursor.classList.remove("cursor--link")
+    }
   }
 
   useEffect(() => {
@@ -94,13 +99,13 @@ const Panel = ({ panel }) => {
       <meshBasicMaterial
         attach="material"
         map={
-          loaded && panel === 1
+          panel === 1
             ? Lapalux
-            : loaded && panel === 2
+            : panel === 2
               ? Reactory
-              : loaded && panel === 3
+              : panel === 3
                 ? Crypto
-                : loaded && panel === 4
+                : panel === 4
                   ? Hive
                   : null
         }

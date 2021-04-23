@@ -31,13 +31,13 @@ const IndexPage = ({ location }) => {
   }
 
   const handleMouseEnter = () => {
-    if (typeof document !== undefined) {
+    if (typeof document !== undefined && !isMobile) {
       const cursor = document.getElementById("cursor")
       cursor.className = "cursor--gradient"
     }
   }
   const handleMouseLeave = () => {
-    if (typeof document !== undefined) {
+    if (typeof document !== undefined && !isMobile) {
       const cursor = document.getElementById("cursor")
       cursor.className = "cursor"
     }

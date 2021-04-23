@@ -66,12 +66,16 @@ const ProjectsPage = ({ transitionStatus, entry }) => {
   //   },
   // }
   const handleMouseEnter = () => {
-    const cursor = document.getElementById("cursor")
-    cursor.classList.add("cursor--chevron-hover")
+    if (!isMobile) {
+      const cursor = document.getElementById("cursor")
+      cursor.classList.add("cursor--chevron-hover")
+    }
   }
   const handleMouseLeave = () => {
-    const cursor = document.getElementById("cursor")
-    cursor.classList.remove("cursor--chevron-hover")
+    if (!isMobile) {
+      const cursor = document.getElementById("cursor")
+      cursor.classList.remove("cursor--chevron-hover")
+    }
   }
 
   return (
