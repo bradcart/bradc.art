@@ -77,23 +77,23 @@
 }
 .canvas-title-1 {
   @extend %canvas-title;
-  width: 75vw;
+  width: 65vw;
   margin-top: 6.5%;
 }
-.canvas-title-2 {
-  @extend %canvas-title;
-  width: 70vw;
-  margin-top: 6.5%;
-}
-.canvas-title-3 {
-  @extend %canvas-title;
-  width: 75vw;
-  transform: scale(1.01);
-  margin-top: 6%;
-  @include media("<=phone") {
-    width: 79vw;
-  }
-}
+// .canvas-title-2 {
+//   @extend %canvas-title;
+//   width: 70vw;
+//   margin-top: 6.5%;
+// }
+// .canvas-title-3 {
+//   @extend %canvas-title;
+//   width: 75vw;
+//   transform: scale(1.01);
+//   margin-top: 6%;
+//   @include media("<=phone") {
+//     width: 79vw;
+//   }
+// }
 .canvas-title-4 {
   @extend %canvas-title;
   width: 33vw;

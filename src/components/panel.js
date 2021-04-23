@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useTexture } from "@react-three/drei/useTexture"
 import { useAspect } from "@react-three/drei/useAspect"
 import { meshBounds } from "@react-three/drei/meshBounds"
@@ -14,7 +14,7 @@ import HiveInfo from "../images/Hive_Info.png"
 import { isMobile } from "react-device-detect"
 
 const Panel = ({ panel }) => {
-  const [loaded, toggleLoaded] = useState(false)
+  const [imgLoaded, toggleImgLoaded] = useState(false)
   const Reactory = useTexture(ReactoryPlaceholder)
   const Lapalux = useTexture(LapaluxPlaceholder)
   const Crypto = useTexture(CryptoPlaceholder)
@@ -36,10 +36,6 @@ const Panel = ({ panel }) => {
     }
   }
 
-  useEffect(() => {
-    toggleLoaded(true)
-  }, [])
-
   return (
     <mesh
       raycast={meshBounds}
@@ -60,56 +56,33 @@ const Panel = ({ panel }) => {
           rel="noreferrer"
           className="project-link"
         >
-          {panel === 1 ? (
-            <img
-              src={LapaluxInfo}
-              alt="Lapalux project link"
-              className="canvas-title-2"
-              onMouseEnter={() => hoverLink()}
-              onMouseLeave={() => unhoverLink()}
-            />
-          ) : panel === 2 ? (
-            <img
-              src={ReactoryInfo}
-              alt="Reactory project link"
-              className="canvas-title-1"
-              onMouseEnter={() => hoverLink()}
-              onMouseLeave={() => unhoverLink()}
-            />
-          ) : panel === 3 ? (
-            <img
-              src={CryptoInfo}
-              alt="Crypto Butler project link"
-              className="canvas-title-3"
-              onMouseEnter={() => hoverLink()}
-              onMouseLeave={() => unhoverLink()}
-            />
-          ) : (
-            <img
-              src={HiveInfo}
-              alt="Hive project link"
-              className="canvas-title-4"
-              onMouseEnter={() => hoverLink()}
-              onMouseLeave={() => unhoverLink()}
-            />
-          )}
+          <img
+            src={panel === 1 ? LapaluxInfo : panel === 2 ? ReactoryInfo : panel === 3 ? CryptoInfo : HiveInfo}
+            alt="Lapalux project link"
+            className={panel === 4 ? "canvas-title-4" : "canvas-title-1"}
+            onMouseEnter={() => hoverLink()}
+            onMouseLeave={() => unhoverLink()}
+            onLoad={() => toggleImgLoaded(true)}
+          />
         </a>
       </Html>
       <planeBufferGeometry attach="geometry" />
-      <meshBasicMaterial
-        attach="material"
-        map={
-          panel === 1
-            ? Lapalux
-            : panel === 2
-              ? Reactory
-              : panel === 3
-                ? Crypto
-                : panel === 4
-                  ? Hive
-                  : null
-        }
-      />
+      {imgLoaded ? (
+        <meshBasicMaterial
+          attach="material"
+          map={
+            panel === 1
+              ? Lapalux
+              : panel === 2
+                ? Reactory
+                : panel === 3
+                  ? Crypto
+                  : panel === 4
+                    ? Hive
+                    : null
+          }
+        />
+      ) : null}
     </mesh>
   )
 }
