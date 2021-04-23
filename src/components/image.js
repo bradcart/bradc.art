@@ -106,7 +106,7 @@ const Image = ({ src, imageClass }) => {
           style={styling}
         // imgStyle={{filter: "hue-rotate(240deg)"}}
         />
-      ) : src === 8 ? (
+      ) : src === 4 ? (
         <Img
           fluid={data.brad2.childImageSharp.fluid}
           alt="brad and a tree"

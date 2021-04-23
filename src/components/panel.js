@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react"
 import { useTexture } from "@react-three/drei/useTexture"
 import { useAspect } from "@react-three/drei/useAspect"
 import { meshBounds } from "@react-three/drei/meshBounds"
-import ReactoryPlaceholder from "../images/Reactory-canvas.jpg"
-import LapaluxPlaceholder from "../images/Lapalux-canvas.jpg"
-import HivePlaceholder from "../images/Hive_Canvas.jpg"
-import CryptoPlaceholder from "../images/Crypto_Canvas.jpg"
+import ReactoryPlaceholder from "../images/reactory-canvas2.jpg"
+import LapaluxPlaceholder from "../images/lapalux-canvas2.jpg"
+import HivePlaceholder from "../images/hive-canvas2.jpg"
+import CryptoPlaceholder from "../images/crypto-canvas2.jpg"
 import { Html } from "@react-three/drei"
 import ReactoryInfo from "../images/Reactory_Info.png"
 import LapaluxInfo from "../images/Lapalux_Info_2.png"
@@ -58,7 +58,7 @@ const Panel = ({ panel }) => {
           {panel === 1 ? (
             <img
               src={LapaluxInfo}
-              alt="Lapalux title screen"
+              alt="Lapalux project link"
               className="canvas-title-2"
               onMouseEnter={() => hoverLink()}
               onMouseLeave={() => unhoverLink()}
@@ -66,7 +66,7 @@ const Panel = ({ panel }) => {
           ) : panel === 2 ? (
             <img
               src={ReactoryInfo}
-              alt="Reactory title screen"
+              alt="Reactory project link"
               className="canvas-title-1"
               onMouseEnter={() => hoverLink()}
               onMouseLeave={() => unhoverLink()}
@@ -74,7 +74,7 @@ const Panel = ({ panel }) => {
           ) : panel === 3 ? (
             <img
               src={CryptoInfo}
-              alt="Crypto Butler title screen"
+              alt="Crypto Butler project link"
               className="canvas-title-3"
               onMouseEnter={() => hoverLink()}
               onMouseLeave={() => unhoverLink()}
@@ -82,7 +82,7 @@ const Panel = ({ panel }) => {
           ) : (
             <img
               src={HiveInfo}
-              alt="Hive title screen"
+              alt="Hive project link"
               className="canvas-title-4"
               onMouseEnter={() => hoverLink()}
               onMouseLeave={() => unhoverLink()}

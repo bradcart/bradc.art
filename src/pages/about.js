@@ -60,7 +60,7 @@ const AboutPage = ({ transitionStatus, entry }) => {
           >
             <div className="about-page">
               <div className="about-page-left">
-                <Image src={8} />
+                <Image src={4} />
               </div>
               <div className="about-page-upper-right">
                 <h2 id="about-header">about me</h2>
