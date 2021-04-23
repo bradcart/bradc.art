@@ -18,6 +18,11 @@
   // mix-blend-mode: difference;
 }
 
+.intro-container-safari {
+  @extend .intro-container;
+  animation: none;
+}
+
 .intro-counter {
   font-family: eurostile-extended, sans-serif;
   font-weight: 900;
@@ -91,8 +96,7 @@
 }
 
 .text-5 {
-  animation: blink 0.8s linear 0.4s, blink 0.8s linear 2.5s,
-    slide-out 1s linear 3.5s;
+  animation: blink 0.8s linear 0.4s, blink 0.8s linear 2.5s, slide-out 1s linear 3.5s;
   opacity: 0;
 }
 

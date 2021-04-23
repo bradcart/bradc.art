@@ -24,7 +24,7 @@ const Intro = () => {
       toggleMounted(false)
     },
     2800,
-    timer === false
+    !isSafari && !timer
   )
 
   // const handleMouseEnter = () => {
@@ -40,12 +40,12 @@ const Intro = () => {
   return (
     <>
       {mounted ? (
-        <div className="intro-container">
+        <div className={isSafari ? "intro-container-safari" : "intro-container"}>
           <div className="intro-text-wrapper">
             {isSafari ? (
               <div className="intro-safari-wrapper">
                 <h3 className="intro-safari-text">
-                  THIS SITE CURRENTLY HAS LIMITED SUPPORT IN SAFARI{" "}
+                  THIS SITE IS CURRENTLY NOT SUPPORTED IN SAFARI{" "}
                   <span id="wave-emoji" role="img" aria-label="Pensive emoji">
                     😔
                   </span>
@@ -63,7 +63,7 @@ const Intro = () => {
               ))
             )}
           </div>
-          {timer ? <div className="intro-counter">{countUp}</div> : null}
+          {timer && !isSafari ? <div className="intro-counter">{countUp}</div> : null}
         </div>
       ) : null}
     </>
