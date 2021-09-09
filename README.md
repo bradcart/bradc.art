@@ -7,4 +7,4 @@
   bradc.art
 </h1>
 
-My portfolio site. Built with Gatsby, SCSS, Framer Motion & react-three-fiber.
+Built with Gatsby, SCSS, Framer Motion & react-three-fiber.
